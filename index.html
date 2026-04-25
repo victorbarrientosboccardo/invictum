@@ -1,0 +1,1863 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invictum SPA — Consultoría Minera de Alto Impacto</title>
+<meta name="description" content="Reducimos costos de mantenimiento minero entre 15% y 36% mediante análisis técnico-económico riguroso. Especialistas en LOM, flotas, neumáticos y reemplazo de equipos.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f8f6f2;
+    --red: #c8102e;
+    --red-dark: #9b0d23;
+    --gray: #6b6b6b;
+    --gray-light: #e8e5e0;
+    --gold: #b8975a;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.4rem 4rem;
+    background: rgba(248,246,242,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--gray-light);
+    transition: all .3s;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: .8rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 600; letter-spacing: .04em;
+    color: var(--black); text-decoration: none;
+  }
+  .logo-icon {
+    width: 36px; height: 36px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3px;
+  }
+  .logo-icon span {
+    display: block; border-radius: 2px;
+    background: var(--red);
+  }
+  .logo-icon span:nth-child(4) { background: var(--red-dark); opacity: .6; }
+  .nav-links {
+    display: flex; gap: 2.5rem; list-style: none;
+  }
+  .nav-links a {
+    font-size: .8rem; font-weight: 500; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--black);
+    text-decoration: none; position: relative; padding-bottom: 2px;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 0; height: 1px; background: var(--red);
+    transition: width .3s;
+  }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta {
+    font-size: .8rem; font-weight: 500; letter-spacing: .1em;
+    text-transform: uppercase; text-decoration: none;
+    color: var(--white); background: var(--red);
+    padding: .65rem 1.5rem; border-radius: 2px;
+    transition: background .25s;
+  }
+  .nav-cta:hover { background: var(--red-dark); }
+
+  /* ── MOBILE MENU ── */
+  .mobile-menu-btn {
+    display: none; width: 40px; height: 40px;
+    background: none; border: none; cursor: pointer;
+    flex-direction: column; justify-content: center; gap: 6px;
+    padding: 8px;
+  }
+  .mobile-menu-btn span {
+    display: block; width: 100%; height: 2px;
+    background: var(--black); transition: all .3s;
+  }
+  .mobile-menu-btn.active span:nth-child(1) { transform: rotate(45deg) translateY(8px); }
+  .mobile-menu-btn.active span:nth-child(2) { opacity: 0; }
+  .mobile-menu-btn.active span:nth-child(3) { transform: rotate(-45deg) translateY(-8px); }
+  .mobile-menu {
+    display: none; position: fixed; top: 70px; left: 0; right: 0;
+    background: var(--white); border-bottom: 1px solid var(--gray-light);
+    padding: 1.5rem 2rem; flex-direction: column; gap: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,.08);
+  }
+  .mobile-menu.active { display: flex; }
+  .mobile-menu a {
+    font-size: .9rem; font-weight: 500; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--black);
+    text-decoration: none; padding: .5rem 0;
+    border-bottom: 1px solid var(--gray-light);
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 80px; overflow: hidden;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 6rem 4rem 6rem 4rem;
+    position: relative;
+  }
+  .hero-eyebrow {
+    font-size: .75rem; font-weight: 500; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--red);
+    margin-bottom: 1.5rem;
+    animation: fadeUp .8s ease both;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+    font-weight: 300; line-height: 1.12;
+    letter-spacing: -.01em;
+    margin-bottom: 2rem;
+    animation: fadeUp .8s .15s ease both;
+  }
+  .hero-title em { font-style: italic; color: var(--red); }
+  .hero-title strong { font-weight: 600; }
+  .hero-desc {
+    font-size: 1.05rem; font-weight: 300; line-height: 1.75;
+    color: var(--gray); max-width: 480px;
+    margin-bottom: 3rem;
+    animation: fadeUp .8s .3s ease both;
+  }
+  .hero-actions {
+    display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
+    animation: fadeUp .8s .45s ease both;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: .6rem;
+    background: var(--black); color: var(--white);
+    font-size: .8rem; font-weight: 500; letter-spacing: .1em;
+    text-transform: uppercase; text-decoration: none;
+    padding: 1rem 2.2rem; border-radius: 2px;
+    transition: background .25s, transform .25s;
+  }
+  .btn-primary:hover { background: var(--red); transform: translateY(-2px); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: .5rem;
+    font-size: .8rem; font-weight: 500; letter-spacing: .1em;
+    text-transform: uppercase; text-decoration: none;
+    color: var(--black); border-bottom: 1px solid var(--black);
+    padding-bottom: 2px; transition: color .25s, border-color .25s;
+  }
+  .btn-secondary:hover { color: var(--red); border-color: var(--red); }
+  .hero-stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; margin-top: 5rem;
+    animation: fadeUp .8s .6s ease both;
+  }
+  .stat {
+    padding: 1.5rem; border-top: 1px solid var(--gray-light);
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem; font-weight: 300; color: var(--red);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: .72rem; color: var(--gray); margin-top: .4rem;
+    letter-spacing: .05em; line-height: 1.5;
+  }
+  .hero-right {
+    position: relative; overflow: hidden;
+    animation: fadeIn 1.2s .2s ease both;
+  }
+  .hero-right img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
+  }
+  .hero-right-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(200,16,46,.15) 0%, transparent 60%);
+  }
+  .hero-tag {
+    position: absolute; bottom: 3rem; left: 2rem;
+    background: var(--white); padding: 1rem 1.5rem;
+    border-left: 3px solid var(--red); max-width: 240px;
+  }
+  .hero-tag p { font-size: .78rem; color: var(--black); line-height: 1.5; }
+  .hero-tag strong { display: block; font-size: 1.1rem; font-family: 'Cormorant Garamond', serif; }
+
+  /* ── TRUST BAND ── */
+  .trust-band {
+    background: var(--black); color: var(--white);
+    padding: 2rem 4rem; text-align: center;
+  }
+  .trust-band p {
+    font-size: .85rem; color: rgba(255,255,255,.6);
+    letter-spacing: .05em; line-height: 1.6;
+  }
+  .trust-band strong { color: var(--white); font-weight: 500; }
+
+  /* ── SECTION BASE ── */
+  section { padding: 7rem 4rem; }
+  .section-label {
+    font-size: .72rem; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--red); font-weight: 500; margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+    font-weight: 300; line-height: 1.15; max-width: 700px;
+  }
+  .section-title em { font-style: italic; color: var(--red); }
+
+  /* ── TICKER ── */
+  .ticker {
+    background: var(--black); padding: 1rem 0;
+    overflow: hidden; white-space: nowrap;
+  }
+  .ticker-inner {
+    display: inline-flex; gap: 4rem;
+    animation: ticker 30s linear infinite;
+  }
+  .ticker-item {
+    font-size: .72rem; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--gray); font-weight: 500;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .ticker-item::before {
+    content: '◆'; color: var(--red); font-size: .5rem;
+  }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ── SERVICES ── */
+  .services { background: var(--white); }
+  .services {
+    position: relative;
+  }
+  .services::before {
+    content: "";
+    position: absolute;
+    top: 0; right: 0;
+    width: 40%;
+    height: 100%;
+    background: url("pexels-kateryna-babaieva-2760242-min.jpg") center/cover;
+    opacity: .03;
+    pointer-events: none;
+  }
+  .services-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 4rem;
+    padding-bottom: 2rem; border-bottom: 1px solid var(--gray-light);
+  }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  }
+  .service-card {
+    padding: 2.5rem;
+    border: 1px solid var(--gray-light);
+    position: relative; overflow: hidden;
+    transition: border-color .3s;
+    cursor: pointer;
+  }
+  .service-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 100%; height: 3px; background: var(--red);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .4s ease;
+  }
+  .service-card:hover { border-color: transparent; }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem; font-weight: 300; color: var(--gray-light);
+    line-height: 1; margin-bottom: 1.5rem;
+    transition: color .3s;
+  }
+  .service-card:hover .service-num { color: var(--red); opacity: .3; }
+  .service-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem; font-weight: 500; margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+  .service-desc {
+    font-size: .85rem; color: var(--gray); line-height: 1.7;
+  }
+  .service-result {
+    margin-top: 1.5rem; padding-top: 1.2rem;
+    border-top: 1px solid var(--gray-light);
+    font-size: .75rem; color: var(--red); font-weight: 500;
+    letter-spacing: .05em;
+  }
+
+  /* ── CASE STUDIES ── */
+  .cases {
+    background: #f2ede6;
+  }
+  .cases-header {
+    text-align: center; max-width: 700px; margin: 0 auto 4rem;
+  }
+  .cases-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .case-card {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    border-radius: 2px;
+    position: relative;
+    transition: transform .3s, box-shadow .3s;
+    border-left: 3px solid var(--red);
+  }
+  .case-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 48px rgba(0,0,0,.12);
+  }
+  .case-industry {
+    font-size: .68rem; letter-spacing: .15em; text-transform: uppercase;
+    color: var(--red); font-weight: 500; margin-bottom: 1rem;
+  }
+  .case-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 500; margin-bottom: 1rem;
+    line-height: 1.25;
+  }
+  .case-challenge {
+    font-size: .85rem; color: var(--gray); line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+  .case-result {
+    padding: 1rem 1.2rem;
+    background: #fdf5f6;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  .case-result-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem; font-weight: 300; color: var(--red);
+    line-height: 1; margin-bottom: .3rem;
+  }
+  .case-result-label {
+    font-size: .75rem; color: var(--gray);
+    letter-spacing: .05em;
+  }
+  .case-metrics {
+    display: flex; gap: 1rem; padding-top: 1rem;
+    border-top: 1px solid var(--gray-light);
+  }
+  .case-metric {
+    flex: 1;
+  }
+  .case-metric-num {
+    font-size: .95rem; font-weight: 600; color: var(--black);
+  }
+  .case-metric-label {
+    font-size: .68rem; color: var(--gray); margin-top: .2rem;
+  }
+
+  /* ── DARK BAND ── */
+  .dark-band {
+    background: var(--white); color: var(--black);
+    padding: 7rem 4rem;
+    border-top: 1px solid var(--gray-light);
+    border-bottom: 1px solid var(--gray-light);
+  }
+  .dark-band .section-title { color: var(--black); max-width: 800px; }
+  .dark-band .section-title em { color: var(--red); }
+  .impact-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 2px; margin-top: 5rem;
+    border-top: 1px solid var(--gray-light);
+  }
+  .impact-item { padding: 2.5rem 1.5rem; border-top: 1px solid var(--gray-light); }
+  .impact-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem; font-weight: 300; color: var(--red); line-height: 1;
+  }
+  .impact-label {
+    font-size: .8rem; color: var(--gray); margin-top: .6rem; line-height: 1.5;
+  }
+
+  /* ── BOOKS ── */
+  .books { background: #f2ede6; }
+  .books-header {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+    align-items: end; margin-bottom: 4rem;
+  }
+  .books-intro {
+    font-size: 1rem; color: var(--gray); line-height: 1.8; font-weight: 300;
+  }
+  .books-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+  }
+  .book-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 2px;
+    position: relative;
+    transition: transform .3s, box-shadow .3s;
+    cursor: pointer;
+  }
+  .book-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 48px rgba(0,0,0,.12);
+  }
+  .book-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; color: var(--red); font-weight: 600;
+    letter-spacing: .1em; margin-bottom: .8rem;
+  }
+  .book-cover {
+    width: 100%; height: 160px;
+    background: linear-gradient(135deg, var(--black) 0%, #2a2a2a 100%);
+    border-radius: 2px; margin-bottom: 1.5rem;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .book-cover-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; font-weight: 500; color: var(--white);
+    text-align: center; padding: 1rem; line-height: 1.3;
+  }
+  .book-cover-bar {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 4px; background: var(--red);
+  }
+  .book-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 500; margin-bottom: .6rem;
+  }
+  .book-card:hover .book-title { color: var(--red); transition: color .25s; }
+  .book-desc {
+    font-size: .8rem; color: var(--gray); line-height: 1.65;
+  }
+  .book-tag {
+    display: inline-block; margin-top: 1rem;
+    font-size: .68rem; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--red); border: 1px solid var(--red);
+    padding: .25rem .6rem; border-radius: 20px;
+  }
+  .pack-card {
+    grid-column: 1 / -1;
+    background: var(--white); color: var(--black);
+    padding: 3rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+    align-items: center; border-radius: 2px;
+    margin-top: 1rem;
+    border: 2px solid var(--red);
+  }
+  .pack-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-weight: 300; line-height: 1.15;
+    margin-bottom: 1rem; color: var(--black);
+  }
+  .pack-title em { font-style: italic; color: var(--red); }
+  .pack-desc {
+    font-size: .88rem; color: var(--gray); line-height: 1.8;
+  }
+  .pack-cta {
+    display: inline-flex; align-items: center; gap: .5rem;
+    margin-top: 2rem; font-size: .78rem; font-weight: 500;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: var(--red); border-bottom: 1px solid var(--red);
+    text-decoration: none; padding-bottom: 2px;
+    transition: color .25s;
+  }
+  .pack-right {
+    display: flex; gap: 1.5rem; align-items: center;
+  }
+  .pack-book {
+    flex: 1; height: 160px;
+    background: var(--gray-light);
+    border-radius: 2px; border-left: 3px solid var(--red);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: .8rem; color: var(--gray);
+    text-align: center; padding: .8rem;
+  }
+
+  /* ── APPROACH ── */
+  .approach {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  }
+  .approach-left {
+    padding: 7rem 4rem;
+    background: var(--gray-light);
+    border-right: 1px solid var(--gray-light);
+  }
+  .approach-left .section-title { color: var(--black); }
+  .approach-left .section-title em { color: var(--red); }
+  .approach-steps { margin-top: 3rem; }
+  .step {
+    display: flex; gap: 1.5rem; padding: 1.8rem 0;
+    border-bottom: 1px solid var(--gray-light);
+  }
+  .step:last-child { border-bottom: none; }
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; color: var(--gold); flex-shrink: 0;
+    width: 32px;
+  }
+  .step-content h4 {
+    font-size: .9rem; font-weight: 500; margin-bottom: .4rem; color: var(--black);
+  }
+  .step-content p { font-size: .82rem; color: var(--gray); line-height: 1.6; }
+  .approach-right {
+    padding: 7rem 4rem;
+    background: var(--white);
+  }
+  .approach-right .section-label { color: var(--red); }
+  .approach-features { margin-top: 3rem; }
+  .feature {
+    padding: 1.8rem 0;
+    border-bottom: 1px solid var(--gray-light);
+    display: flex; gap: 1.5rem; align-items: flex-start;
+  }
+  .feature:last-child { border-bottom: none; }
+  .feature-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    background: #fdf0f2; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+  }
+  .feature h4 { font-size: .9rem; font-weight: 500; margin-bottom: .4rem; }
+  .feature p { font-size: .82rem; color: var(--gray); line-height: 1.6; }
+
+  /* ── CONTACT ── */
+  .contact { background: var(--white); }
+  .contact {
+    position: relative;
+  }
+  .contact::before {
+    content: "";
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%;
+    height: 40%;
+    background: url("pexels-dapurmelodi-1009926-min.jpg") center/cover;
+    opacity: .03;
+    pointer-events: none;
+  }
+  .contact-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .contact-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3vw, 3rem); font-weight: 300; line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+  .contact-desc {
+    font-size: .9rem; color: var(--gray); line-height: 1.8; margin-bottom: 2.5rem;
+  }
+  .contact-info { display: flex; flex-direction: column; gap: 1.2rem; }
+  .contact-item {
+    display: flex; align-items: center; gap: 1rem;
+    font-size: .88rem;
+  }
+  .contact-item-icon {
+    width: 36px; height: 36px; background: #fdf0f2;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: .9rem; flex-shrink: 0;
+  }
+  .contact-item a { color: var(--black); text-decoration: none; }
+  .contact-item a:hover { color: var(--red); }
+  .contact-form {
+    display: flex; flex-direction: column; gap: 1.2rem;
+  }
+  .form-group { display: flex; flex-direction: column; gap: .4rem; }
+  .form-group label {
+    font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--gray); font-weight: 500;
+  }
+  .form-group input, .form-group textarea, .form-group select {
+    font-family: 'DM Sans', sans-serif;
+    font-size: .9rem; padding: .85rem 1rem;
+    border: 1px solid var(--gray-light); border-radius: 2px;
+    background: var(--white); color: var(--black);
+    outline: none; transition: border-color .25s;
+    resize: none;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+    border-color: var(--red);
+  }
+  .form-group textarea { height: 120px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .btn-submit {
+    background: var(--red); color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: .8rem; font-weight: 500; letter-spacing: .12em;
+    text-transform: uppercase; border: none; border-radius: 2px;
+    padding: 1rem 2rem; cursor: pointer; transition: background .25s;
+    margin-top: .5rem;
+  }
+  .btn-submit:hover { background: var(--red-dark); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black); color: var(--white);
+    padding: 4rem 4rem 2rem;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 4rem; padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .footer-brand .nav-logo { color: var(--white); margin-bottom: 1rem; }
+  .footer-brand p { font-size: .82rem; color: rgba(255,255,255,.4); line-height: 1.7; }
+  .footer-col h5 {
+    font-size: .7rem; letter-spacing: .18em; text-transform: uppercase;
+    color: rgba(255,255,255,.4); margin-bottom: 1.2rem; font-weight: 500;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+  .footer-col ul li a {
+    font-size: .82rem; color: rgba(255,255,255,.6);
+    text-decoration: none; transition: color .25s;
+  }
+  .footer-col ul li a:hover { color: var(--gold); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 1.5rem;
+  }
+  .footer-bottom p { font-size: .75rem; color: rgba(255,255,255,.25); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(32px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── DETAIL MODAL ── */
+  .detail-overlay {
+    display: none; position: fixed; inset: 0; z-index: 1100;
+    background: rgba(10,10,10,.75); backdrop-filter: blur(6px);
+    align-items: center; justify-content: center; padding: 1rem;
+  }
+  .detail-overlay.active { display: flex; }
+  .detail-modal {
+    background: var(--white); border-radius: 4px;
+    width: 100%; max-width: 680px; max-height: 88vh;
+    overflow-y: auto;
+    box-shadow: 0 40px 100px rgba(0,0,0,.25);
+    animation: modalIn .3s ease both;
+  }
+  .detail-modal-header {
+    padding: 2rem 2.5rem 1.5rem;
+    border-bottom: 1px solid var(--gray-light);
+    position: sticky; top: 0; background: var(--white); z-index: 2;
+    display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;
+  }
+  .detail-modal-header-left { flex: 1; }
+  .detail-modal-eyebrow {
+    font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--red); font-weight: 500; margin-bottom: .5rem;
+  }
+  .detail-modal-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-weight: 400; line-height: 1.2; color: var(--black);
+  }
+  .detail-modal-close {
+    width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+    border: 1px solid var(--gray-light); background: none;
+    cursor: pointer; font-size: 1rem; color: var(--gray);
+    display: flex; align-items: center; justify-content: center;
+    transition: background .2s; margin-top: .2rem;
+  }
+  .detail-modal-close:hover { background: var(--gray-light); }
+  .detail-modal-body { padding: 2rem 2.5rem 2.5rem; }
+  .detail-modal-cover {
+    width: 100%; height: 140px; border-radius: 4px;
+    margin-bottom: 1.8rem; display: flex; align-items: center;
+    justify-content: center; position: relative; overflow: hidden;
+  }
+  .detail-modal-cover-bar {
+    position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--red);
+  }
+  .detail-modal-cover-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 400; color: #fff;
+    text-align: center; padding: 1rem; line-height: 1.3;
+  }
+  .detail-section { margin-bottom: 1.8rem; }
+  .detail-section h4 {
+    font-size: .72rem; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--red); font-weight: 500; margin-bottom: .8rem;
+    padding-bottom: .5rem; border-bottom: 1px solid var(--gray-light);
+  }
+  .detail-section p {
+    font-size: .88rem; color: var(--gray); line-height: 1.8;
+  }
+  .detail-section ul {
+    list-style: none; display: flex; flex-direction: column; gap: .6rem;
+  }
+  .detail-section ul li {
+    font-size: .88rem; color: var(--gray); line-height: 1.6;
+    padding-left: 1.2rem; position: relative;
+  }
+  .detail-section ul li::before {
+    content: '◆'; position: absolute; left: 0;
+    color: var(--red); font-size: .45rem; top: .35rem;
+  }
+  .detail-result-box {
+    background: #fdf5f6; border-left: 3px solid var(--red);
+    padding: 1rem 1.2rem; border-radius: 0 4px 4px 0;
+    margin-top: 1.5rem;
+  }
+  .detail-result-box p {
+    font-size: .85rem; color: var(--black); font-weight: 500;
+  }
+  .detail-result-box span { color: var(--red); }
+  .detail-modal-actions {
+    display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;
+  }
+  .detail-btn-buy {
+    flex: 1; padding: .9rem 1.5rem; text-align: center;
+    background: var(--black); color: var(--white);
+    font-size: .78rem; font-weight: 500; letter-spacing: .1em;
+    text-transform: uppercase; border: none; border-radius: 2px;
+    cursor: pointer; transition: background .25s; min-width: 160px;
+  }
+  .detail-btn-buy:hover { background: var(--red); }
+  .detail-btn-wa {
+    flex: 1; padding: .9rem 1.5rem; text-align: center;
+    background: #25d366; color: #fff;
+    font-size: .78rem; font-weight: 500; letter-spacing: .1em;
+    text-transform: uppercase; border: none; border-radius: 2px;
+    cursor: pointer; transition: background .25s; min-width: 160px;
+    text-decoration: none; display: flex; align-items: center; justify-content: center;
+  }
+  .detail-btn-wa:hover { background: #1da851; }
+
+  /* ── WHATSAPP FLOTANTE ── */
+  .wa-float {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
+    display: flex; flex-direction: column; align-items: flex-end; gap: .6rem;
+  }
+  .wa-bubble {
+    background: var(--white); border-radius: 8px;
+    padding: .8rem 1.1rem; font-size: .8rem; color: var(--black);
+    box-shadow: 0 8px 32px rgba(0,0,0,.15);
+    max-width: 200px; line-height: 1.4; text-align: right;
+    animation: waBubble .4s ease both;
+    display: none;
+  }
+  .wa-bubble.show { display: block; }
+  .wa-btn {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: #25d366;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 6px 24px rgba(37,211,102,.4);
+    cursor: pointer; border: none;
+    transition: transform .25s, box-shadow .25s;
+    text-decoration: none;
+  }
+  .wa-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 32px rgba(37,211,102,.5);
+  }
+  .wa-btn svg { width: 28px; height: 28px; fill: #fff; }
+  .wa-pulse {
+    position: absolute; top: 0; right: 0;
+    width: 14px; height: 14px; background: var(--red);
+    border-radius: 50%; border: 2px solid var(--white);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: .7; }
+  }
+  @keyframes waBubble {
+    from { opacity: 0; transform: translateY(8px) scale(.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  /* ── MODAL MERCADOPAGO ── */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 1000;
+    background: rgba(10,10,10,.7); backdrop-filter: blur(4px);
+    align-items: center; justify-content: center;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal {
+    background: var(--white); border-radius: 4px;
+    width: 90%; max-width: 520px; max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 32px 80px rgba(0,0,0,.3);
+    animation: modalIn .3s ease both;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: translateY(20px) scale(.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .modal-header {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--gray-light);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .modal-header h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 500;
+  }
+  .modal-close {
+    width: 32px; height: 32px; border-radius: 50%;
+    border: 1px solid var(--gray-light); background: none;
+    cursor: pointer; font-size: 1.1rem; color: var(--gray);
+    display: flex; align-items: center; justify-content: center;
+    transition: background .2s;
+  }
+  .modal-close:hover { background: var(--gray-light); }
+  .modal-body { padding: 2rem; }
+  .modal-product {
+    display: flex; gap: 1rem; align-items: center;
+    padding: 1rem; background: #f5f2ee; border-radius: 4px;
+    margin-bottom: 1.5rem;
+  }
+  .modal-product-cover {
+    width: 52px; height: 68px; border-radius: 3px;
+    flex-shrink: 0; display: flex; align-items: center;
+    justify-content: center;
+    font-size: .55rem; color: #fff; text-align: center; padding: 4px;
+    font-family: 'Cormorant Garamond', serif; line-height: 1.2;
+  }
+  .modal-product-info { flex: 1; }
+  .modal-product-info h4 { font-size: .9rem; font-weight: 500; margin-bottom: .25rem; }
+  .modal-product-info p { font-size: .78rem; color: var(--gray); }
+  .modal-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-weight: 300; color: var(--red);
+  }
+  .modal-divider {
+    height: 1px; background: var(--gray-light); margin: 1.2rem 0;
+  }
+  .modal-label {
+    font-size: .7rem; letter-spacing: .15em; text-transform: uppercase;
+    color: var(--gray); font-weight: 500; margin-bottom: .8rem;
+    display: block;
+  }
+  .mp-btn {
+    width: 100%; padding: 1rem;
+    background: #009ee3; color: #fff;
+    border: none; border-radius: 6px; cursor: pointer;
+    font-size: 1rem; font-weight: 600;
+    display: flex; align-items: center; justify-content: center; gap: .7rem;
+    transition: background .25s;
+    margin-bottom: .8rem;
+  }
+  .mp-btn:hover { background: #007bbf; }
+  .mp-btn svg { width: 22px; height: 22px; fill: #fff; }
+  .mp-or {
+    text-align: center; font-size: .75rem; color: var(--gray);
+    margin: .8rem 0; position: relative;
+  }
+  .mp-or::before, .mp-or::after {
+    content: ''; position: absolute; top: 50%;
+    width: 42%; height: 1px; background: var(--gray-light);
+  }
+  .mp-or::before { left: 0; }
+  .mp-or::after { right: 0; }
+  .wa-pay-btn {
+    width: 100%; padding: .9rem;
+    background: #25d366; color: #fff;
+    border: none; border-radius: 6px; cursor: pointer;
+    font-size: .88rem; font-weight: 600;
+    display: flex; align-items: center; justify-content: center; gap: .6rem;
+    transition: background .25s;
+  }
+  .wa-pay-btn:hover { background: #1da851; }
+  .mp-note {
+    font-size: .72rem; color: var(--gray); text-align: center;
+    margin-top: 1rem; line-height: 1.5;
+  }
+  .mp-note a { color: var(--red); }
+  .mp-cards {
+    display: flex; gap: .5rem; justify-content: center;
+    margin-top: .8rem; flex-wrap: wrap;
+  }
+  .mp-card-icon {
+    background: var(--white); border: 1px solid var(--gray-light);
+    border-radius: 4px; padding: .25rem .5rem;
+    font-size: .65rem; font-weight: 600; color: var(--gray);
+    letter-spacing: .05em;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    nav { padding: 1.2rem 2rem; }
+    .nav-links { display: none; }
+    .nav-cta { display: none; }
+    .mobile-menu-btn { display: flex; }
+    section { padding: 5rem 2rem; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { height: 50vh; }
+    .hero-left { padding: 4rem 2rem; }
+    .hero-stats { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .cases-grid { grid-template-columns: 1fr; }
+    .books-grid { grid-template-columns: 1fr; }
+    .books-header { grid-template-columns: 1fr; gap: 2rem; }
+    .pack-card { grid-template-columns: 1fr; }
+    .pack-right { flex-wrap: wrap; }
+    .approach { grid-template-columns: 1fr; }
+    .approach-left, .approach-right { padding: 5rem 2rem; }
+    .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .impact-grid { grid-template-columns: 1fr 1fr; }
+    .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  @media (max-width: 640px) {
+    .hero-actions { flex-direction: column; width: 100%; }
+    .btn-primary, .btn-secondary { width: 100%; text-align: center; justify-content: center; }
+    .form-row { grid-template-columns: 1fr; }
+    .wa-float { bottom: 1.5rem; right: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-icon">
+      <span></span><span></span><span></span><span></span>
+    </div>
+    Invictum SPA
+  </a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#casos">Casos</a></li>
+    <li><a href="#libros">Publicaciones</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a href="#contacto" class="nav-cta">Solicitar diagnóstico</a>
+  <button class="mobile-menu-btn" id="mobileMenuBtn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#servicios" onclick="closeMobileMenu()">Servicios</a>
+  <a href="#casos" onclick="closeMobileMenu()">Casos de Éxito</a>
+  <a href="#libros" onclick="closeMobileMenu()">Publicaciones</a>
+  <a href="#nosotros" onclick="closeMobileMenu()">Nosotros</a>
+  <a href="#contacto" onclick="closeMobileMenu()">Contacto</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Consultoría Minera · Chile</p>
+    <h1 class="hero-title">
+      Reducimos sus costos de mantenimiento entre <strong><em>15% y 36%</em></strong>
+    </h1>
+    <p class="hero-desc">
+      Análisis técnico-económico riguroso aplicado a operaciones mineras a cielo abierto. Decisiones respaldadas por modelamiento cuantitativo, no por intuición.
+    </p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn-primary">Solicitar diagnóstico sin costo</a>
+      <a href="#casos" class="btn-secondary">Ver casos de éxito →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">15–20%</div>
+        <div class="stat-label">Mejora en precisión de presupuestos LOM</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">36%</div>
+        <div class="stat-label">Reducción en costos de neumáticos (3 años)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">21%</div>
+        <div class="stat-label">Ahorro por reemplazo optimizado</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="pexels-vlad-chetan-2892618-min.jpg" alt="Operación minera a cielo abierto" />
+    <div class="hero-right-overlay"></div>
+    <div class="hero-tag">
+      <strong>Invictum SPA</strong>
+      <p>Resultados comprobados en minas de cobre y hierro</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAND -->
+<div class="trust-band">
+  <p>
+    Trabajamos con <strong>operaciones mineras líderes en Chile</strong> · Credenciales: PUCV, USM, Universidad de Chile · <strong>Autor de 6 libros técnicos</strong> sobre mantenimiento minero
+  </p>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">Análisis de Costos LOM</span>
+    <span class="ticker-item">Selección de Flotas</span>
+    <span class="ticker-item">Estudios de Reemplazo</span>
+    <span class="ticker-item">Contratos MARC y LPP</span>
+    <span class="ticker-item">Gestión de Neumáticos</span>
+    <span class="ticker-item">Optimización de Repuestos</span>
+    <span class="ticker-item">Minería del Cobre</span>
+    <span class="ticker-item">Minería del Hierro</span>
+    <span class="ticker-item">Análisis de Costos LOM</span>
+    <span class="ticker-item">Selección de Flotas</span>
+    <span class="ticker-item">Estudios de Reemplazo</span>
+    <span class="ticker-item">Contratos MARC y LPP</span>
+    <span class="ticker-item">Gestión de Neumáticos</span>
+    <span class="ticker-item">Optimización de Repuestos</span>
+    <span class="ticker-item">Minería del Cobre</span>
+    <span class="ticker-item">Minería del Hierro</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services reveal" id="servicios">
+  <div class="services-header">
+    <div>
+      <p class="section-label">Nuestros Servicios</p>
+      <h2 class="section-title">Soluciones especializadas para la <em>industria minera</em></h2>
+    </div>
+    <a href="#contacto" class="btn-secondary">Solicitar propuesta →</a>
+  </div>
+  <div class="services-grid">
+    <div class="service-card" onclick="openDetail('lom')">
+      <div class="service-num">01</div>
+      <h3 class="service-title">Análisis de Costos en Planes Mineros (LOM)</h3>
+      <p class="service-desc">Proyectamos con alta precisión los costos de mantenimiento asociados a combustible, lubricantes, neumáticos, herramientas de desgaste, repuestos y servicios para una planificación presupuestaria más exacta.</p>
+      <p class="service-result">↑ Ajustes de 15–20% en proyecciones de gasto</p>
+    </div>
+    <div class="service-card" onclick="openDetail('flotas')">
+      <div class="service-num">02</div>
+      <h3 class="service-title">Selección de Flotas de Equipos</h3>
+      <p class="service-desc">Evaluación técnica y económica de distintas opciones de equipos, considerando costos de ciclo de vida, cláusulas contractuales y garantías ofrecidas por los proveedores.</p>
+      <p class="service-result">↓ Diferencias de hasta 18% en costos de adquisición</p>
+    </div>
+    <div class="service-card" onclick="openDetail('reemplazo')">
+      <div class="service-num">03</div>
+      <h3 class="service-title">Estudios de Reemplazo de Equipos</h3>
+      <p class="service-desc">Evaluamos el momento óptimo para el reemplazo de equipos con alta recurrencia de fallas, dificultades de abastecimiento o bajo desempeño frente a nuevas tecnologías.</p>
+      <p class="service-result">↓ Reducción de gastos de mantenimiento hasta 21%</p>
+    </div>
+    <div class="service-card" onclick="openDetail('marc')">
+      <div class="service-num">04</div>
+      <h3 class="service-title">Evaluación de Contratos MARC y LPP</h3>
+      <p class="service-desc">Revisamos contratos de mantenimiento celebrados con OEM, identificando oportunidades de optimización, ajustes en tarifas y mejoras en los niveles de soporte técnico y logístico.</p>
+      <p class="service-result">↓ Ahorros identificados de 12–14% en mantenimiento</p>
+    </div>
+    <div class="service-card" onclick="openDetail('neumaticos')">
+      <div class="service-num">05</div>
+      <h3 class="service-title">Gestión de Neumáticos Mineros</h3>
+      <p class="service-desc">Estudios de desempeño en terreno y análisis logísticos de reparaciones, con modelos de gestión que determinan el momento óptimo para realizar rotaciones.</p>
+      <p class="service-result">↓ Reducción del 36% en gastos de neumáticos (3 años)</p>
+    </div>
+    <div class="service-card" onclick="openDetail('repuestos')">
+      <div class="service-num">06</div>
+      <h3 class="service-title">Optimización de Inversiones en Repuestos</h3>
+      <p class="service-desc">Aplicamos modelos estadísticos avanzados para definir niveles óptimos de inventario de repuestos críticos, equilibrando disponibilidad operativa con minimización del capital inmovilizado.</p>
+      <p class="service-result">✦ Economías de escala en adquisición de componentes</p>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section class="cases reveal" id="casos">
+  <div class="cases-header">
+    <p class="section-label">Casos de Éxito</p>
+    <h2 class="section-title">Resultados cuantificables en <em>operaciones reales</em></h2>
+  </div>
+  <div class="cases-grid">
+    <div class="case-card">
+      <p class="case-industry">Minería del Cobre · Norte de Chile</p>
+      <h3 class="case-title">Reducción de 36% en costos de neumáticos</h3>
+      <p class="case-challenge">
+        Operación con flota de 28 camiones presentaba desgaste acelerado de neumáticos y altos costos de reposición sin claridad sobre las causas raíz.
+      </p>
+      <div class="case-result">
+        <div class="case-result-num">36%</div>
+        <div class="case-result-label">Reducción sostenida durante 3 años</div>
+      </div>
+      <div class="case-metrics">
+        <div class="case-metric">
+          <div class="case-metric-num">28 unidades</div>
+          <div class="case-metric-label">Flota analizada</div>
+        </div>
+        <div class="case-metric">
+          <div class="case-metric-num">3 años</div>
+          <div class="case-metric-label">Período medido</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <p class="case-industry">Minería del Hierro · Centro-Norte</p>
+      <h3 class="case-title">Optimización de presupuesto LOM con precisión de 20%</h3>
+      <p class="case-challenge">
+        Proyecto en etapa de ingeniería básica requería proyecciones de costos de mantenimiento para planificación presupuestaria de 15 años.
+      </p>
+      <div class="case-result">
+        <div class="case-result-num">+20%</div>
+        <div class="case-result-label">Ajuste en proyección inicial de gastos</div>
+      </div>
+      <div class="case-metrics">
+        <div class="case-metric">
+          <div class="case-metric-num">15 años</div>
+          <div class="case-metric-label">LOM proyectado</div>
+        </div>
+        <div class="case-metric">
+          <div class="case-metric-num">6 categorías</div>
+          <div class="case-metric-label">Costos analizados</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <p class="case-industry">Minería del Cobre · Región Central</p>
+      <h3 class="case-title">Evaluación de reemplazo con ahorro de 21%</h3>
+      <p class="case-challenge">
+        Flota de 35 camiones con alta indisponibilidad y crecientes costos de mantenimiento requería decisión de reemplazo vs. overhaul.
+      </p>
+      <div class="case-result">
+        <div class="case-result-num">21%</div>
+        <div class="case-result-label">Reducción en gastos de mantenimiento</div>
+      </div>
+      <div class="case-metrics">
+        <div class="case-metric">
+          <div class="case-metric-num">VAN · VAC · CAE</div>
+          <div class="case-metric-label">Metodologías aplicadas</div>
+        </div>
+        <div class="case-metric">
+          <div class="case-metric-num">3 alternativas</div>
+          <div class="case-metric-label">Evaluadas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DARK IMPACT BAND -->
+<div class="dark-band reveal" id="impacto">
+  <p class="section-label">Resultados Comprobados</p>
+  <h2 class="section-title">
+    Décadas de experiencia operativa convertidas en <em>valor cuantificable</em>
+  </h2>
+  <div class="impact-grid">
+    <div class="impact-item">
+      <div class="impact-num">15–20%</div>
+      <div class="impact-label">Mejora en precisión de presupuestos de mantenimiento LOM</div>
+    </div>
+    <div class="impact-item">
+      <div class="impact-num">18%</div>
+      <div class="impact-label">Diferencia en costos de adquisición entre proveedores identificada mediante benchmarking</div>
+    </div>
+    <div class="impact-item">
+      <div class="impact-num">36%</div>
+      <div class="impact-label">Reducción sostenida en gasto de neumáticos durante tres años consecutivos</div>
+    </div>
+    <div class="impact-item">
+      <div class="impact-num">40%</div>
+      <div class="impact-label">Del valor de un equipo nuevo recuperado mediante restauraciones integrales</div>
+    </div>
+  </div>
+</div>
+
+<!-- BOOKS -->
+<section class="books reveal" id="libros">
+  <div class="books-header">
+    <div>
+      <p class="section-label">Publicaciones Técnicas</p>
+      <h2 class="section-title">Conocimiento especializado para <em>profesionales del sector</em></h2>
+    </div>
+    <p class="books-intro">
+      Una colección de libros técnicos que combinan rigor metodológico con experiencia práctica en faenas mineras reales. Disponibles individualmente o como colección completa.
+    </p>
+  </div>
+  <div class="books-grid">
+    <div class="book-card" onclick="openDetail('libro1')">
+      <div class="book-num">Libro 01</div>
+      <div class="book-cover" style="background: linear-gradient(135deg, #1a2a3a, #2c4a6e);">
+        <div class="book-cover-bar"></div>
+        <div class="book-cover-text">Mantenimiento de Equipos en Minas a Cielo Abierto</div>
+      </div>
+      <h3 class="book-title">Mantenimiento de Equipos en Minas a Cielo Abierto</h3>
+      <p class="book-desc">Liderazgo, innovación, neumáticos, estimación de costos, externalización y reemplazo de equipos. Seis capítulos con casos reales en faenas mineras.</p>
+      <span class="book-tag">6 capítulos · Casos prácticos</span>
+    </div>
+    <div class="book-card" onclick="openDetail('libro2')">
+      <div class="book-num">Libro 02</div>
+      <div class="book-cover" style="background: linear-gradient(135deg, #2d1b1b, #5a2d2d);">
+        <div class="book-cover-bar"></div>
+        <div class="book-cover-text">El Cerebro del Mantenedor</div>
+      </div>
+      <h3 class="book-title">El Cerebro del Mantenedor</h3>
+      <p class="book-desc">Sesgos cognitivos, neurociencia y economía del comportamiento aplicados al mantenimiento. Cómo los comportamientos inconscientes influyen en las decisiones.</p>
+      <span class="book-tag">Behavioral Science · Mantenimiento</span>
+    </div>
+    <div class="book-card" onclick="openDetail('libro3')">
+      <div class="book-num">Libro 03</div>
+      <div class="book-cover" style="background: linear-gradient(135deg, #1a3a2a, #2d6e4a);">
+        <div class="book-cover-bar"></div>
+        <div class="book-cover-text">Que la Producción no se Detenga</div>
+      </div>
+      <h3 class="book-title">Que la Producción no se Detenga</h3>
+      <p class="book-desc">Gestión óptima de repuestos con teoría de colas, cadenas de Markov y simulación Monte Carlo. Cómo determinar el pool de componentes ideal para su flota.</p>
+      <span class="book-tag">Inventario · Simulación</span>
+    </div>
+    <div class="book-card" onclick="openDetail('libro4')">
+      <div class="book-num">Libro 04</div>
+      <div class="book-cover" style="background: linear-gradient(135deg, #2a1a0a, #6e4a1a);">
+        <div class="book-cover-bar"></div>
+        <div class="book-cover-text">Reemplazo de Camiones Mineros</div>
+      </div>
+      <h3 class="book-title">Reemplazo de Camiones Mineros</h3>
+      <p class="book-desc">VAN, VAC, CAE y VAE aplicados al reemplazo de flotas. Incluye camiones autónomos, costos operacionales y metodologías de evaluación de proyectos de inversión.</p>
+      <span class="book-tag">Evaluación de proyectos · VAN</span>
+    </div>
+    <div class="book-card" onclick="openDetail('libro5')">
+      <div class="book-num">Libro 05</div>
+      <div class="book-cover" style="background: linear-gradient(135deg, #1a1a2a, #2a2a5a);">
+        <div class="book-cover-bar"></div>
+        <div class="book-cover-text">Reemplazo de Componentes</div>
+      </div>
+      <h3 class="book-title">Reemplazo de Componentes</h3>
+      <p class="book-desc">Determinación de la frecuencia óptima de reemplazo de componentes. Tipos de reparaciones, TBO, costos por unidad de tiempo y casos numéricos detallados.</p>
+      <span class="book-tag">Confiabilidad · TBO</span>
+    </div>
+    <div class="book-card" onclick="openDetail('libro6')">
+      <div class="book-num">Libro 06</div>
+      <div class="book-cover" style="background: linear-gradient(135deg, #0a1a2a, #1a3a4a);">
+        <div class="book-cover-bar"></div>
+        <div class="book-cover-text">La Mente Confiable</div>
+      </div>
+      <h3 class="book-title">La Mente Confiable</h3>
+      <p class="book-desc">Toma de decisiones en contextos de incertidumbre. Sesgos cognitivos en accidentes industriales y cómo desarrollar una "mente confiable" individual y organizacional.</p>
+      <span class="book-tag">Decisiones · Excelencia operacional</span>
+    </div>
+    <div class="pack-card">
+      <div>
+        <p class="section-label">Edición Especial</p>
+        <h3 class="pack-title">Colección <em>4 Pack</em><br>Mantenimiento Minero</h3>
+        <p class="pack-desc">
+          Este exclusivo pack reúne en una sola edición el conocimiento fundamental para abordar con éxito los principales desafíos del mantenimiento en minería a cielo abierto. Presentado en formato de caja exclusiva — ideal para programas de capacitación, formación continua o como obsequio institucional de alto valor corporativo.
+        </p>
+        <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;">
+          <button onclick="openModal('Colección 4 Pack — Mantenimiento Minero','linear-gradient(135deg,#1a1200,#4a3800)','4 Pack')" style="display:inline-flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:none;border-bottom:1px solid var(--gold);background:none;cursor:pointer;padding-bottom:2px;">Comprar con tarjeta →</button>
+          <a href="https://wa.me/56965945170?text=Hola%20V%C3%ADctor%2C%20me%20interesa%20la%20Colecci%C3%B3n%204%20Pack%20Mantenimiento%20Minero" target="_blank" class="pack-cta" style="border-color:#25d366;color:#25d366;">WhatsApp →</a>
+        </div>
+      </div>
+      <div class="pack-right">
+        <div class="pack-book">Mantenimiento<br>de Equipos</div>
+        <div class="pack-book">El Cerebro del<br>Mantenedor</div>
+        <div class="pack-book">Reemplazo<br>de Camiones</div>
+        <div class="pack-book">La Mente<br>Confiable</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<div class="approach reveal" id="nosotros">
+  <div class="approach-left">
+    <p class="section-label">Nuestra Metodología</p>
+    <h2 class="section-title">Rigor técnico.<br><em>Decisiones</em><br>de impacto.</h2>
+    <div class="approach-steps">
+      <div class="step">
+        <span class="step-num">01</span>
+        <div class="step-content">
+          <h4>Diagnóstico y levantamiento</h4>
+          <p>Identificamos brechas en los indicadores actuales de mantenimiento mediante análisis de datos operacionales en terreno.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <div class="step-content">
+          <h4>Modelamiento técnico-económico</h4>
+          <p>Aplicamos modelos estadísticos y metodologías de ingeniería para cuantificar oportunidades de mejora con precisión.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <div class="step-content">
+          <h4>Recomendaciones accionables</h4>
+          <p>Entregamos soluciones a medida con bases de ingeniería que justifican técnicamente cada decisión estratégica.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-num">04</span>
+        <div class="step-content">
+          <h4>Seguimiento y validación</h4>
+          <p>Acompañamos la implementación para asegurar que los resultados proyectados se materialicen en la operación real.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="approach-right">
+    <p class="section-label">Por qué Invictum</p>
+    <h2 class="section-title" style="font-size: 2rem;">Experiencia operativa que se convierte en ventaja competitiva</h2>
+    <div class="approach-features">
+      <div class="feature">
+        <div class="feature-icon">⛏️</div>
+        <div>
+          <h4>Especialización minera profunda</h4>
+          <p>Red de profesionales con amplia trayectoria operativa en minas de cobre y hierro en Chile. No somos consultores genéricos.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📊</div>
+        <div>
+          <h4>Metodologías cuantitativas rigurosas</h4>
+          <p>Modelos estadísticos avanzados, simulaciones Monte Carlo y análisis de ciclo de vida que respaldan cada recomendación.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🎯</div>
+        <div>
+          <h4>Soluciones a medida</h4>
+          <p>Cada proyecto se diseña según las condiciones específicas de su operación, flota y contratos vigentes.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📚</div>
+        <div>
+          <h4>Conocimiento publicado y validado</h4>
+          <p>Autor de seis libros técnicos sobre mantenimiento minero, lo que refleja profundidad intelectual y compromiso con la disciplina.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact reveal" id="contacto">
+  <div class="contact-inner">
+    <div>
+      <p class="section-label">Contacto</p>
+      <h2 class="contact-title">Conversemos sobre su operación</h2>
+      <p class="contact-desc">
+        Un diagnóstico inicial de 30 minutos sin costo le permitirá identificar oportunidades de mejora inmediatas en su operación. Agende una llamada con nuestro líder de proyectos.
+      </p>
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-item-icon">👤</div>
+          <div>
+            <strong>Víctor Barrientos Boccardo</strong><br>
+            <span style="font-size:.82rem; color: var(--gray)">Líder de Proyectos · Mgtr. PUCV & USM / Ing. U. Chile</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📱</div>
+          <a href="tel:+56965945170">+56 9 6594 5170</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">✉️</div>
+          <a href="mailto:contacto@invictum.cl">contacto@invictum.cl</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">💬</div>
+          <a href="https://wa.me/56965945170" target="_blank">WhatsApp disponible</a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" placeholder="Su nombre" id="contactName">
+          </div>
+          <div class="form-group">
+            <label>Empresa</label>
+            <input type="text" placeholder="Compañía minera" id="contactCompany">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="correo@empresa.cl" id="contactEmail">
+        </div>
+        <div class="form-group">
+          <label>Servicio de interés</label>
+          <select id="contactService">
+            <option value="">Seleccione un servicio…</option>
+            <option>Análisis de Costos LOM</option>
+            <option>Selección de Flotas</option>
+            <option>Estudios de Reemplazo</option>
+            <option>Contratos MARC / LPP</option>
+            <option>Gestión de Neumáticos</option>
+            <option>Optimización de Repuestos</option>
+            <option>Adquisición de Libros</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Mensaje</label>
+          <textarea placeholder="Cuéntenos brevemente sobre su operación y el desafío que enfrenta…" id="contactMessage"></textarea>
+        </div>
+        <button class="btn-submit" onclick="sendContactForm()">Enviar mensaje →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">
+        <div class="logo-icon">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        Invictum SPA
+      </a>
+      <p style="margin-top:.8rem">Transformando datos en decisiones de alto impacto para el sector minero en Chile.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Servicios</h5>
+      <ul>
+        <li><a href="#servicios">Análisis LOM</a></li>
+        <li><a href="#servicios">Selección de Flotas</a></li>
+        <li><a href="#servicios">Reemplazo de Equipos</a></li>
+        <li><a href="#servicios">Contratos MARC/LPP</a></li>
+        <li><a href="#servicios">Gestión de Neumáticos</a></li>
+        <li><a href="#servicios">Optimización Repuestos</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Publicaciones</h5>
+      <ul>
+        <li><a href="#libros">Mantenimiento Equipos</a></li>
+        <li><a href="#libros">El Cerebro del Mantenedor</a></li>
+        <li><a href="#libros">Que la Producción no se Detenga</a></li>
+        <li><a href="#libros">Reemplazo Camiones Mineros</a></li>
+        <li><a href="#libros">Reemplazo de Componentes</a></li>
+        <li><a href="#libros">La Mente Confiable</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contacto</h5>
+      <ul>
+        <li><a href="mailto:contacto@invictum.cl">contacto@invictum.cl</a></li>
+        <li><a href="tel:+56965945170">+56 9 6594 5170</a></li>
+        <li><a href="https://wa.me/56965945170">WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Invictum SPA Consultoría. Todos los derechos reservados.</p>
+    <p>Chile · Sector Minero</p>
+  </div>
+</footer>
+
+<!-- DETAIL MODAL -->
+<div class="detail-overlay" id="detailModal" onclick="closeDetailOutside(event)">
+  <div class="detail-modal" id="detailBox">
+    <div class="detail-modal-header">
+      <div class="detail-modal-header-left">
+        <p class="detail-modal-eyebrow" id="detailEyebrow"></p>
+        <h2 class="detail-modal-title" id="detailTitle"></h2>
+      </div>
+      <button class="detail-modal-close" onclick="closeDetail()">✕</button>
+    </div>
+    <div class="detail-modal-body" id="detailBody"></div>
+  </div>
+</div>
+
+<!-- MODAL MERCADOPAGO -->
+<div class="modal-overlay" id="payModal" onclick="closeModalOutside(event)">
+  <div class="modal" id="modalBox">
+    <div class="modal-header">
+      <h3>Adquirir publicación</h3>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-product">
+        <div class="modal-product-cover" id="modalCover"></div>
+        <div class="modal-product-info">
+          <h4 id="modalTitle"></h4>
+          <p id="modalNum"></p>
+        </div>
+        <div class="modal-price">$XX.990</div>
+      </div>
+      <span class="modal-label">Seleccione su método de pago</span>
+      <button class="mp-btn" onclick="goMercadoPago()">
+        <svg viewBox="0 0 32 32" width="24" height="24" fill="white" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="6" fill="#009ee3"/><text x="4" y="22" font-size="12" font-weight="bold" fill="white" font-family="Arial">MP</text></svg>
+        Pagar con MercadoPago
+      </button>
+      <div class="mp-cards">
+        <span class="mp-card-icon">VISA</span>
+        <span class="mp-card-icon">MC</span>
+        <span class="mp-card-icon">AMEX</span>
+        <span class="mp-card-icon">Débito</span>
+        <span class="mp-card-icon">Redcompra</span>
+        <span class="mp-card-icon">Webpay</span>
+      </div>
+      <div class="mp-or">o también</div>
+      <button class="wa-pay-btn" onclick="goWhatsAppBuy()">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.857L.057 23.75a.5.5 0 0 0 .614.63l6.094-1.598A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.863 9.863 0 0 1-5.03-1.373l-.36-.214-3.733.979.997-3.645-.234-.374A9.86 9.86 0 0 1 2.1 12C2.1 6.527 6.527 2.1 12 2.1S21.9 6.527 21.9 12 17.473 21.9 12 21.9z"/></svg>
+        Coordinar compra por WhatsApp
+      </button>
+      <p class="mp-note">Al hacer clic en MercadoPago será redirigido a la plataforma segura de pago.<br>
+      Aceptamos tarjetas de crédito y débito emitidas en Chile.<br>
+      ¿Dudas? Escríbanos a <a href="mailto:contacto@invictum.cl">contacto@invictum.cl</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- WHATSAPP FLOTANTE -->
+<div class="wa-float">
+  <div class="wa-bubble" id="waBubble">¿Consultas sobre servicios o libros?</div>
+  <div style="position:relative;">
+    <a href="https://wa.me/56965945170?text=Hola%20V%C3%ADctor%2C%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Invictum%20SPA" target="_blank" class="wa-btn" id="waBtn">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.857L.057 23.75a.5.5 0 0 0 .614.63l6.094-1.598A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.863 9.863 0 0 1-5.03-1.373l-.36-.214-3.733.979.997-3.645-.234-.374A9.86 9.86 0 0 1 2.1 12C2.1 6.527 6.527 2.1 12 2.1S21.9 6.527 21.9 12 17.473 21.9 12 21.9z"/></svg>
+    </a>
+    <span class="wa-pulse"></span>
+  </div>
+</div>
+
+<script>
+// ── MOBILE MENU ──
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+
+mobileMenuBtn.addEventListener('click', () => {
+  mobileMenuBtn.classList.toggle('active');
+  mobileMenu.classList.toggle('active');
+});
+
+function closeMobileMenu() {
+  mobileMenuBtn.classList.remove('active');
+  mobileMenu.classList.remove('active');
+}
+
+// ── REVEAL ANIMATIONS ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── NAV SHADOW ON SCROLL ──
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.boxShadow = window.scrollY > 20 ? '0 4px 24px rgba(0,0,0,.08)' : 'none';
+});
+
+// ── WHATSAPP BUBBLE ──
+setTimeout(() => {
+  const bubble = document.getElementById('waBubble');
+  if (bubble) bubble.classList.add('show');
+  setTimeout(() => { if (bubble) bubble.classList.remove('show'); }, 6000);
+}, 3000);
+
+// ── MODAL MERCADOPAGO ──
+let currentBook = '';
+function openModal(title, gradient, num) {
+  currentBook = title;
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalNum').textContent = num;
+  const cover = document.getElementById('modalCover');
+  cover.style.background = gradient;
+  cover.textContent = title;
+  document.getElementById('payModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('payModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+function closeModalOutside(e) {
+  if (e.target === document.getElementById('payModal')) closeModal();
+}
+
+// ── DETAIL DATA ──
+const DETAILS = {
+  // ── SERVICIOS ──
+  lom: {
+    eyebrow: 'Servicio 01 · Consultoría',
+    title: 'Análisis de Costos de Mantenimiento en Planes Mineros (LOM)',
+    gradient: 'linear-gradient(135deg,#1a2a3a,#2c4a6e)',
+    sections: [
+      { heading: 'Descripción del servicio', body: 'En el desarrollo de nuevos proyectos mineros, así como en operaciones en funcionamiento que planifican expansiones mediante la incorporación de nuevas flotas de equipos, es fundamental establecer supuestos técnicos y económicos para proyectar adecuadamente los gastos de mantenimiento a lo largo de toda la vida de la mina.' },
+      { heading: '¿Qué incluye el análisis?', items: ['Combustible y lubricantes por modelo de equipo','Neumáticos según condiciones operacionales de la faena','Herramientas de desgaste y consumibles','Repuestos y componentes mayores (TBO)','Servicios de mantenimiento externalizados','Monitoreo de condiciones y análisis de aceites','Elaboración, revisión y detección de brechas presupuestarias'] },
+      { heading: '¿A quién está dirigido?', body: 'Empresas mineras en etapa de factibilidad o ingeniería básica, operaciones con expansiones de flota planificadas, y gerencias de mantenimiento que necesitan validar o corregir sus proyecciones de costos actuales.' },
+    ],
+    result: 'Estudios realizados en minas de cobre y hierro han permitido identificar y corregir brechas del 15% al 20% en las proyecciones de gasto de mantenimiento.',
+    buyLabel: null,
+    waMsg: 'Hola Víctor, me interesa el servicio de Análisis de Costos LOM. ¿Podríamos conversar?'
+  },
+  flotas: {
+    eyebrow: 'Servicio 02 · Consultoría',
+    title: 'Selección de Flotas de Equipos',
+    gradient: 'linear-gradient(135deg,#2a1a0a,#6e4a1a)',
+    sections: [
+      { heading: 'Descripción del servicio', body: 'En los procesos de adquisición de equipos mineros, es fundamental realizar un análisis detallado de las ofertas técnico-económicas de los distintos proveedores. La estandarización de las ofertas y la definición de una línea base de comparación permiten identificar la alternativa más conveniente, integrando criterios financieros, técnicos y de mercado.' },
+      { heading: '¿Qué incluye el análisis?', items: ['Evaluación técnica de disponibilidades declaradas por OEM','Análisis de costos de ciclo de vida (LCC) por alternativa','Revisión de cláusulas contractuales y garantías','Benchmarking de disponibilidad operativa entre marcas y modelos','Estandarización de ofertas para comparación justa','Recomendación fundamentada de la flota más conveniente'] },
+      { heading: 'Contexto de aplicación', body: 'Aplicado en proyectos mineros nuevos de extracción de cobre, seleccionando las opciones más rentables entre diversas marcas y modelos, evidenciando diferencias de hasta un 18% en los costos de adquisición de la flota entre proveedores.' },
+    ],
+    result: 'Diferencias identificadas de hasta un 18% en costos de adquisición entre proveedores mediante análisis comparativo estandarizado.',
+    buyLabel: null,
+    waMsg: 'Hola Víctor, me interesa el servicio de Selección de Flotas. ¿Podríamos conversar?'
+  },
+  reemplazo: {
+    eyebrow: 'Servicio 03 · Consultoría',
+    title: 'Estudios de Reemplazo de Equipos',
+    gradient: 'linear-gradient(135deg,#1a3a2a,#2d6e4a)',
+    sections: [
+      { heading: 'Descripción del servicio', body: 'Con el uso prolongado, las maquinarias presentan deterioro en sus componentes mecánicos, sistemas y estructuras. A pesar de las reparaciones continuas, estas fallas generan disminución en la disponibilidad operativa y aumento en los costos de mantenimiento, creando mermas de producción y riesgos de incumplimiento en los planes mineros (LOM).' },
+      { heading: '¿Qué incluye el estudio?', items: ['Análisis histórico de costos e indisponibilidades de la flota','Identificación del año óptimo económico de reemplazo','Evaluación de alternativas: equipo nuevo vs. overhaul vs. restauración','Modelamiento financiero con VAN, VAC, CAE y VAE','Bases de ingeniería que justifican técnicamente la decisión','Comparación de productividad con nuevas tecnologías disponibles'] },
+      { heading: '¿Cuándo es necesario?', body: 'Cuando los equipos presentan alta recurrencia de fallas, dificultades de abastecimiento de repuestos, bajo desempeño frente a nuevas tecnologías disponibles, o cuando la operación requiere tomar decisiones de inversión de alto impacto.' },
+    ],
+    result: 'Análisis han permitido reducir gastos de mantenimiento hasta un 21% al optar por equipos nuevos, y recuperar camiones por un 40% del valor de uno nuevo mediante restauraciones integrales.',
+    buyLabel: null,
+    waMsg: 'Hola Víctor, me interesa el servicio de Estudios de Reemplazo de Equipos. ¿Podríamos conversar?'
+  },
+  marc: {
+    eyebrow: 'Servicio 04 · Consultoría',
+    title: 'Evaluación de Contratos de Mantenimiento (MARC y LPP)',
+    gradient: 'linear-gradient(135deg,#1a1a2a,#2a2a5a)',
+    sections: [
+      { heading: 'Descripción del servicio', body: 'En operaciones mineras es común establecer contratos donde el fabricante de equipos (OEM) asume el mantenimiento mediante modalidades MARC (tarifa fija más costos variables por repuestos) o LPP (mano de obra con estructura tarifaria de repuestos). A medida que se ejecutan, surgen oportunidades de ajuste ante las condiciones dinámicas del entorno minero.' },
+      { heading: '¿Qué incluye el análisis?', items: ['Revisión profunda de estructura tarifaria y cláusulas vigentes','Análisis de costos reales vs. costos contractuales','Identificación de oportunidades de optimización de tarifas','Evaluación de niveles de soporte técnico y logístico','Análisis comparativo entre modalidades MARC y LPP','Recomendación de ajustes o cambio de modalidad contractual'] },
+      { heading: 'Focos de mejora identificados', items: ['Optimización de costos variables por repuestos','Mejora de disponibilidades garantizadas','Fortalecimiento del soporte técnico OEM','Ajuste de indicadores de desempeño (KPIs) contractuales'] },
+    ],
+    result: 'Análisis en operaciones de cobre y hierro han identificado ahorros de entre 12% y 14% en mantenimiento, ya sea mediante cambio de modalidad contractual u optimización del contrato vigente.',
+    buyLabel: null,
+    waMsg: 'Hola Víctor, me interesa el servicio de Evaluación de Contratos MARC y LPP. ¿Podríamos conversar?'
+  },
+  neumaticos: {
+    eyebrow: 'Servicio 05 · Consultoría',
+    title: 'Mejoras en la Gestión de Neumáticos Mineros',
+    gradient: 'linear-gradient(135deg,#2d1b1b,#5a2d2d)',
+    sections: [
+      { heading: 'Descripción del servicio', body: 'Los neumáticos son insumos estratégicos en la operación minera, seleccionados según las condiciones operacionales de cada faena. Sus extensos plazos de traslado desde fábrica (cercanos a seis meses) hacen crítica su gestión. El cuidado operacional para evitar sobrecargas, excesos de velocidad y cortes requiere una disciplina estricta para maximizar su vida útil.' },
+      { heading: '¿Qué incluye el estudio?', items: ['Estudios de desempeño en terreno (benchmarking)','Análisis logístico de reparaciones y reencauches','Modelos de gestión para determinar rotaciones óptimas','Evaluación de proveedores y marcas según condiciones de faena','Programas de capacitación operacional para extender vida útil','Diseño de indicadores de gestión de neumáticos (KPIs)'] },
+      { heading: 'Factores críticos analizados', items: ['Control de sobrecargas y excesos de velocidad','Condiciones de pistas y caminos de acarreo','Temperatura de operación y presiones de inflado','Logística de reparación y disponibilidad de stock'] },
+    ],
+    result: 'Prácticas implementadas en operaciones de hierro y cobre han permitido reducir los gastos en neumáticos nuevos en un 36% durante tres años consecutivos.',
+    buyLabel: null,
+    waMsg: 'Hola Víctor, me interesa el servicio de Gestión de Neumáticos Mineros. ¿Podríamos conversar?'
+  },
+  repuestos: {
+    eyebrow: 'Servicio 06 · Consultoría',
+    title: 'Optimización de Inversiones en Repuestos',
+    gradient: 'linear-gradient(135deg,#0a1a2a,#1a3a4a)',
+    sections: [
+      { heading: 'Descripción del servicio', body: 'Para garantizar la continuidad de los procesos productivos, las empresas invierten en mantener repuestos en bodega. Los repuestos de alto valor — con plazos de entrega extendidos y disponibilidad limitada en el mercado — presentan desafíos especiales, ya que las pérdidas por falta de un repuesto frecuentemente superan con creces su valor comercial.' },
+      { heading: '¿Qué incluye el análisis?', items: ['Modelos estadísticos para definir niveles óptimos de inventario','Teoría de colas y cadenas de Markov aplicadas a la demanda','Simulación Monte Carlo para escenarios de incertidumbre','Análisis de pool óptimo de componentes por tamaño de flota','Estimación de economías de escala en adquisición conjunta','Equilibrio entre disponibilidad operativa y capital inmovilizado'] },
+      { heading: 'Preguntas que responde este estudio', items: ['¿Cuántas unidades de motor diésel debo tener en bodega?','¿Cuál es el pool de componentes óptimo para mi flota?','¿Cuál es el impacto de las economías de escala en componentes de alto valor?','¿Cómo reduzco capital inmovilizado sin arriesgar la producción?'] },
+    ],
+    result: 'Modelos aplicados permiten asegurar la disponibilidad requerida por producción manteniendo el stock eficiente con la menor inversión posible.',
+    buyLabel: null,
+    waMsg: 'Hola Víctor, me interesa el servicio de Optimización de Repuestos. ¿Podríamos conversar?'
+  },
+
+  // ── LIBROS ──
+  libro1: {
+    eyebrow: 'Libro 01 · Víctor Barrientos',
+    title: 'Mantenimiento de Equipos en Minas a Cielo Abierto',
+    gradient: 'linear-gradient(135deg,#1a2a3a,#2c4a6e)',
+    sections: [
+      { heading: 'Acerca del libro', body: 'El propósito de este libro es dar a conocer estudios relacionados con la gestión del mantenimiento de flotas de equipos en minas a cielo abierto. Está dividido en seis capítulos que abordan distintas temáticas con casos reales en faenas mineras.' },
+      { heading: 'Contenido por capítulo', items: ['Cap. 1: Liderazgo situacional para mejorar información en órdenes de trabajo','Cap. 2: Innovación operacional aplicada a gestión de neumáticos de camiones mineros','Cap. 3: Metodología para estimar el costo de falta en detenciones no programadas','Cap. 4: Externalización del mantenimiento y estimación de tarifa CPH para contratos MARC','Cap. 5: Reemplazo de flotas de camiones de hasta 200 toneladas — año óptimo económico','Cap. 6: Alternativas de reemplazo para equipos con altas horas de operación'] },
+      { heading: 'Ideal para', body: 'Ingenieros de mantenimiento, jefes de operaciones, supervisores de flota, y profesionales que buscan casos prácticos aplicados a faenas mineras reales en Chile.' },
+    ],
+    result: 'Un libro de referencia esencial para mejorar la gestión integral del mantenimiento en minería a cielo abierto.',
+    buyLabel: 'Mantenimiento de Equipos en Minas a Cielo Abierto',
+    waMsg: 'Hola Víctor, me interesa adquirir el libro "Mantenimiento de Equipos en Minas a Cielo Abierto". ¿Cómo puedo comprarlo?'
+  },
+  libro2: {
+    eyebrow: 'Libro 02 · Víctor Barrientos',
+    title: 'El Cerebro del Mantenedor',
+    gradient: 'linear-gradient(135deg,#2d1b1b,#5a2d2d)',
+    sections: [
+      { heading: 'Acerca del libro', body: 'Este libro da los pasos iniciales para enlazar los conceptos de neurociencia, psicología, sesgos cognitivos y economía del comportamiento con el mantenimiento industrial. Un libro único en su enfoque para la industria minera.' },
+      { heading: 'Contenido por capítulo', items: ['Cap. 1: Sesgos cognitivos — cómo el cerebro comete errores sistemáticos en decisiones de mantenimiento','Cap. 2: Empujones al comportamiento (nudges) para mejorar calidad de información en órdenes de trabajo','Cap. 3: Predicciones en escenarios de incertidumbre — integrando experiencia, intuición y variables de ingeniería'] },
+      { heading: 'Ideal para', body: 'Gerentes y supervisores de mantenimiento, ingenieros de confiabilidad, y profesionales interesados en mejorar la calidad de las decisiones técnicas integrando ciencias del comportamiento.' },
+    ],
+    result: 'Aplicación de nudges al ingreso de información en órdenes de mantenimiento permitió aumentos considerables de la calidad de datos para análisis.',
+    buyLabel: 'El Cerebro del Mantenedor',
+    waMsg: 'Hola Víctor, me interesa adquirir el libro "El Cerebro del Mantenedor". ¿Cómo puedo comprarlo?'
+  },
+  libro3: {
+    eyebrow: 'Libro 03 · Víctor Barrientos',
+    title: 'Que la Producción no se Detenga',
+    gradient: 'linear-gradient(135deg,#1a3a2a,#2d6e4a)',
+    sections: [
+      { heading: 'Acerca del libro', body: 'Las definiciones de inversión en repuestos son cruciales para soportar los procesos productivos. Es muy frecuente que las pérdidas por la falta de un repuesto superen con creces su valor comercial. Este libro responde preguntas aparentemente sencillas pero de alto impacto económico.' },
+      { heading: 'Preguntas que responde', items: ['¿Cuántas unidades de motor diésel debo guardar en bodega?','¿Cuántos alternadores, motores de tracción o suspensiones necesito?','¿Cuál es el pool de componentes óptimo para flotas de 10, 20, 30 o más equipos?','¿Cuál es el impacto de las economías de escala en componentes de alto valor?'] },
+      { heading: 'Metodología aplicada', body: 'Se utilizan conceptos de ingeniería como teoría de colas y cadenas de Markov, combinados con simulación Monte Carlo para obtener aproximaciones a la solución óptima. Los casos incluyen distintos repuestos, diversos tamaños de flota, costos de falta y tiempos de reparación en talleres externos.' },
+    ],
+    result: 'Herramienta práctica para determinar el nivel óptimo de inventario de componentes críticos y minimizar el capital inmovilizado sin arriesgar la producción.',
+    buyLabel: 'Que la Producción no se Detenga',
+    waMsg: 'Hola Víctor, me interesa adquirir el libro "Que la Producción no se Detenga". ¿Cómo puedo comprarlo?'
+  },
+  libro4: {
+    eyebrow: 'Libro 04 · Víctor Barrientos',
+    title: 'Reemplazo de Camiones Mineros',
+    gradient: 'linear-gradient(135deg,#2a1a0a,#6e4a1a)',
+    sections: [
+      { heading: 'Acerca del libro', body: 'Aborda uno de los proyectos de inversión más frecuentes en la industria minera: el reemplazo de camiones. Con ejercicios resueltos y enfoque práctico, sirve como introducción a este tipo de estudios de alto impacto financiero.' },
+      { heading: 'Contenido por capítulo', items: ['Cap. 1: Tipos de vida útil de activos, errores comunes y categorización de modelos de reemplazo','Cap. 2: Diferencias entre camiones mecánicos y eléctricos, mercado chileno, costos y productividades','Cap. 3: Camiones autónomos — disponibilidades, costos, productividad y proyección de crecimiento','Cap. 4: Metodología para estimar ingresos generados por el uso de un camión minero','Cap. 5: Evaluación de proyectos — VAN, VAC, CAE y VAE aplicados al reemplazo'] },
+      { heading: 'Ideal para', body: 'Ingenieros de proyectos, gerentes de activos, jefes de planificación y profesionales que deben justificar técnica y financieramente decisiones de reemplazo de flota ante la gerencia.' },
+    ],
+    result: 'Marco metodológico completo para evaluar proyectos de reemplazo de camiones integrando aspectos financieros, operacionales y de costos de mantenimiento.',
+    buyLabel: 'Reemplazo de Camiones Mineros',
+    waMsg: 'Hola Víctor, me interesa adquirir el libro "Reemplazo de Camiones Mineros". ¿Cómo puedo comprarlo?'
+  },
+  libro5: {
+    eyebrow: 'Libro 05 · Víctor Barrientos',
+    title: 'Reemplazo de Componentes',
+    gradient: 'linear-gradient(135deg,#1a1a2a,#2a2a5a)',
+    sections: [
+      { heading: 'Acerca del libro', body: 'Aborda una de las tareas clave en los procesos de mantenimiento: la determinación de la frecuencia óptima de reemplazo de componentes de un activo físico. Responde preguntas críticas sobre cuándo y cómo reemplazar componentes para minimizar costos o maximizar disponibilidad.' },
+      { heading: 'Contenido por capítulo', items: ['Cap. 1: Tipos de reparaciones — perfectas, imperfectas, mínimas, peor que antes','Cap. 2: Relación entre frecuencias de cambio preventivo y correctivo — dependencia y logística','Cap. 3: Integrales discretas, tiempos medios de falla y TBO (Tiempo entre Overhaul)','Cap. 4: Marco teórico para cálculo de costos por unidad de tiempo','Cap. 5: Ejemplos numéricos para distintos componentes de flotas mineras'] },
+      { heading: 'Preguntas clave que responde', items: ['¿Qué componentes deben reemplazarse de forma preventiva vs. correctiva?','¿Nuevo, reparado o remanufacturado?','¿Cada cuánto tiempo reemplazar para minimizar costos totales?','¿Cuál es el impacto de los retrasos logísticos en la frecuencia óptima?'] },
+    ],
+    result: 'Con ejercicios concretos, sirve como introducción práctica a la optimización de frecuencias de reemplazo para reducir costos totales de mantenimiento.',
+    buyLabel: 'Reemplazo de Componentes',
+    waMsg: 'Hola Víctor, me interesa adquirir el libro "Reemplazo de Componentes". ¿Cómo puedo comprarlo?'
+  },
+  libro6: {
+    eyebrow: 'Libro 06 · Víctor Barrientos',
+    title: 'La Mente Confiable',
+    gradient: 'linear-gradient(135deg,#0a1a2a,#1a3a4a)',
+    sections: [
+      { heading: 'Acerca del libro', body: 'Aborda uno de los desafíos más críticos en la gestión industrial: la toma de decisiones en contextos de incertidumbre, presión de tiempo y consecuencias relevantes para la seguridad, confiabilidad y continuidad operacional.' },
+      { heading: 'Contenido por capítulo', items: ['Cap. 1: Fundamentos de la toma de decisiones — analíticas vs. intuitivas — heurísticas como ventaja adaptativa','Cap. 2: Sesgos cognitivos en mantenimiento, operaciones y seguridad — análisis de accidentes reales','Cap. 3: La Escalera del Conocimiento — de datos a decisiones confiables — barreras culturales y organizacionales'] },
+      { heading: 'Preguntas que explora', items: ['¿Son siempre mejores las decisiones basadas en grandes volúmenes de datos?','¿Cuándo una decisión rápida e intuitiva es más confiable que un análisis exhaustivo?','¿Qué rol juegan los sesgos cognitivos en los accidentes industriales?','¿Por qué algunas organizaciones repiten sistemáticamente las mismas fallas?'] },
+    ],
+    result: 'Propone una visión práctica para desarrollar una "mente confiable" individual y organizacional, integrando intuición experta, análisis técnico y aprendizaje organizacional.',
+    buyLabel: 'La Mente Confiable',
+    waMsg: 'Hola Víctor, me interesa adquirir el libro "La Mente Confiable". ¿Cómo puedo comprarlo?'
+  },
+};
+
+function openDetail(id) {
+  const d = DETAILS[id];
+  if (!d) return;
+  document.getElementById('detailEyebrow').textContent = d.eyebrow;
+  document.getElementById('detailTitle').textContent = d.title;
+
+  let bodyHTML = '';
+
+  // Cover
+  bodyHTML += `<div class="detail-modal-cover" style="background:${d.gradient}">
+    <div class="detail-modal-cover-bar"></div>
+    <div class="detail-modal-cover-text">${d.title}</div>
+  </div>`;
+
+  // Sections
+  d.sections.forEach(sec => {
+    bodyHTML += `<div class="detail-section"><h4>${sec.heading}</h4>`;
+    if (sec.body) bodyHTML += `<p>${sec.body}</p>`;
+    if (sec.items) {
+      bodyHTML += '<ul>' + sec.items.map(i => `<li>${i}</li>`).join('') + '</ul>';
+    }
+    bodyHTML += '</div>';
+  });
+
+  // Result box
+  if (d.result) {
+    bodyHTML += `<div class="detail-result-box"><p><span>Resultado comprobado:</span> ${d.result}</p></div>`;
+  }
+
+  // Actions
+  bodyHTML += '<div class="detail-modal-actions">';
+  if (d.buyLabel) {
+    bodyHTML += `<button class="detail-btn-buy" onclick="openModal('${d.buyLabel}','${d.gradient}','Libro')">Comprar con tarjeta →</button>`;
+  }
+  const waUrl = 'https://wa.me/56965945170?text=' + encodeURIComponent(d.waMsg);
+  bodyHTML += `<a href="${waUrl}" target="_blank" class="detail-btn-wa">WhatsApp →</a>`;
+  if (!d.buyLabel) {
+    bodyHTML += `<button class="detail-btn-buy" onclick="window.location='#contacto';closeDetail();">Solicitar propuesta →</button>`;
+  }
+  bodyHTML += '</div>';
+
+  document.getElementById('detailBody').innerHTML = bodyHTML;
+  document.getElementById('detailModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDetail() {
+  document.getElementById('detailModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+function closeDetailOutside(e) {
+  if (e.target === document.getElementById('detailModal')) closeDetail();
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeDetail(); closeModal(); } });
+
+// ── MERCADOPAGO ──
+const MP_LINKS = {
+  'Mantenimiento de Equipos en Minas a Cielo Abierto': 'https://mpago.la/REEMPLAZAR_LIBRO1',
+  'El Cerebro del Mantenedor': 'https://mpago.la/REEMPLAZAR_LIBRO2',
+  'Que la Producción no se Detenga': 'https://mpago.la/REEMPLAZAR_LIBRO3',
+  'Reemplazo de Camiones Mineros': 'https://mpago.la/REEMPLAZAR_LIBRO4',
+  'Reemplazo de Componentes': 'https://mpago.la/REEMPLAZAR_LIBRO5',
+  'La Mente Confiable': 'https://mpago.la/REEMPLAZAR_LIBRO6',
+  'Colección 4 Pack — Mantenimiento Minero': 'https://mpago.la/REEMPLAZAR_PACK',
+};
+function goMercadoPago() {
+  const link = MP_LINKS[currentBook];
+  if (link && !link.includes('REEMPLAZAR')) {
+    window.open(link, '_blank');
+  } else {
+    alert('⚙️ Configuración pendiente\n\nPara activar MercadoPago:\n1. Ingrese a mercadopago.cl\n2. Cree un "Enlace de pago" por libro\n3. Reemplace las URLs en MP_LINKS del código\n\nPor ahora puede contactar por WhatsApp.');
+  }
+}
+function goWhatsAppBuy() {
+  const msg = encodeURIComponent('Hola Víctor, me interesa adquirir: ' + currentBook + '. ¿Cómo puedo comprarlo?');
+  window.open('https://wa.me/56965945170?text=' + msg, '_blank');
+  closeModal();
+}
+
+// ── CONTACT FORM ──
+function sendContactForm() {
+  const name = document.getElementById('contactName').value;
+  const company = document.getElementById('contactCompany').value;
+  const email = document.getElementById('contactEmail').value;
+  const service = document.getElementById('contactService').value;
+  const message = document.getElementById('contactMessage').value;
+  
+  if (!name || !email) { 
+    alert('Por favor complete nombre y email.'); 
+    return; 
+  }
+  
+  let msg = `Hola Víctor, me llamo ${name}`;
+  if (company) msg += ` de ${company}`;
+  msg += ` y me gustaría conversar sobre los servicios de Invictum SPA.`;
+  if (service) msg += ` Mi interés principal es: ${service}.`;
+  if (message) msg += ` ${message}`;
+  msg += ` Mi email es ${email}`;
+  
+  window.open('https://wa.me/56965945170?text=' + encodeURIComponent(msg), '_blank');
+}
+</script>
+</body>
+</html>
