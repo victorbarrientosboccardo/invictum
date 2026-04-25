@@ -420,11 +420,13 @@
     letter-spacing: .1em; margin-bottom: .8rem;
   }
   .book-cover {
-    width: 100%; height: 160px;
+    width: 100%; height: 220px;
     background: linear-gradient(135deg, var(--black) 0%, #2a2a2a 100%);
     border-radius: 2px; margin-bottom: 1.5rem;
     display: flex; align-items: center; justify-content: center;
     position: relative; overflow: hidden;
+    background-size: cover;
+    background-position: center;
   }
   .book-cover-text {
     font-family: 'Cormorant Garamond', serif;
@@ -975,7 +977,7 @@
       Reducimos sus costos de mantenimiento entre <strong><em>15% y 36%</em></strong>
     </h1>
     <p class="hero-desc">
-      Análisis técnico-económico riguroso aplicado a operaciones mineras a cielo abierto. Decisiones respaldadas por modelamiento cuantitativo, no por intuición.
+      Análisis técnico-económico riguroso aplicado a operaciones mineras a cielo abierto. Decisiones respaldadas por modelamiento cuantitativo y benchmarking de otras faenas mineras.
     </p>
     <div class="hero-actions">
       <a href="#contacto" class="btn-primary">Solicitar diagnóstico sin costo</a>
@@ -1048,7 +1050,7 @@
     <div class="service-card" onclick="openDetail('lom')">
       <div class="service-num">01</div>
       <h3 class="service-title">Análisis de Costos en Planes Mineros (LOM)</h3>
-      <p class="service-desc">Proyectamos con alta precisión los costos de mantenimiento asociados a combustible, lubricantes, neumáticos, herramientas de desgaste, repuestos y servicios para una planificación presupuestaria más exacta.</p>
+      <p class="service-desc">Proyectamos los costos de mantenimiento asociados a combustible, lubricantes, neumáticos, herramientas de desgaste, repuestos y servicios para una planificación presupuestaria más exacta.</p>
       <p class="service-result">↑ Ajustes de 15–20% en proyecciones de gasto</p>
     </div>
     <div class="service-card" onclick="openDetail('flotas')">
@@ -1199,9 +1201,7 @@
   <div class="books-grid">
     <div class="book-card" onclick="openDetail('libro1')">
       <div class="book-num">Libro 01</div>
-      <div class="book-cover" style="background: linear-gradient(135deg, #1a2a3a, #2c4a6e);">
-        <div class="book-cover-bar"></div>
-        <div class="book-cover-text">Mantenimiento de Equipos en Minas a Cielo Abierto</div>
+      <div class="book-cover" style="background-image: url('01-Crisol.jpg'); background-size: cover; background-position: center;">
       </div>
       <h3 class="book-title">Mantenimiento de Equipos en Minas a Cielo Abierto</h3>
       <p class="book-desc">Liderazgo, innovación, neumáticos, estimación de costos, externalización y reemplazo de equipos. Seis capítulos con casos reales en faenas mineras.</p>
@@ -1209,9 +1209,7 @@
     </div>
     <div class="book-card" onclick="openDetail('libro2')">
       <div class="book-num">Libro 02</div>
-      <div class="book-cover" style="background: linear-gradient(135deg, #2d1b1b, #5a2d2d);">
-        <div class="book-cover-bar"></div>
-        <div class="book-cover-text">El Cerebro del Mantenedor</div>
+      <div class="book-cover" style="background-image: url('02-Crisol.jpg'); background-size: cover; background-position: center;">
       </div>
       <h3 class="book-title">El Cerebro del Mantenedor</h3>
       <p class="book-desc">Sesgos cognitivos, neurociencia y economía del comportamiento aplicados al mantenimiento. Cómo los comportamientos inconscientes influyen en las decisiones.</p>
@@ -1219,9 +1217,7 @@
     </div>
     <div class="book-card" onclick="openDetail('libro3')">
       <div class="book-num">Libro 03</div>
-      <div class="book-cover" style="background: linear-gradient(135deg, #1a3a2a, #2d6e4a);">
-        <div class="book-cover-bar"></div>
-        <div class="book-cover-text">Que la Producción no se Detenga</div>
+      <div class="book-cover" style="background-image: url('03-Crisol.jpg'); background-size: cover; background-position: center;">
       </div>
       <h3 class="book-title">Que la Producción no se Detenga</h3>
       <p class="book-desc">Gestión óptima de repuestos con teoría de colas, cadenas de Markov y simulación Monte Carlo. Cómo determinar el pool de componentes ideal para su flota.</p>
@@ -1229,9 +1225,7 @@
     </div>
     <div class="book-card" onclick="openDetail('libro4')">
       <div class="book-num">Libro 04</div>
-      <div class="book-cover" style="background: linear-gradient(135deg, #2a1a0a, #6e4a1a);">
-        <div class="book-cover-bar"></div>
-        <div class="book-cover-text">Reemplazo de Camiones Mineros</div>
+      <div class="book-cover" style="background-image: url('04-Crisol.jpg'); background-size: cover; background-position: center;">
       </div>
       <h3 class="book-title">Reemplazo de Camiones Mineros</h3>
       <p class="book-desc">VAN, VAC, CAE y VAE aplicados al reemplazo de flotas. Incluye camiones autónomos, costos operacionales y metodologías de evaluación de proyectos de inversión.</p>
@@ -1239,9 +1233,7 @@
     </div>
     <div class="book-card" onclick="openDetail('libro5')">
       <div class="book-num">Libro 05</div>
-      <div class="book-cover" style="background: linear-gradient(135deg, #1a1a2a, #2a2a5a);">
-        <div class="book-cover-bar"></div>
-        <div class="book-cover-text">Reemplazo de Componentes</div>
+      <div class="book-cover" style="background-image: url('05-Crisol.jpg'); background-size: cover; background-position: center;">
       </div>
       <h3 class="book-title">Reemplazo de Componentes</h3>
       <p class="book-desc">Determinación de la frecuencia óptima de reemplazo de componentes. Tipos de reparaciones, TBO, costos por unidad de tiempo y casos numéricos detallados.</p>
@@ -1249,9 +1241,7 @@
     </div>
     <div class="book-card" onclick="openDetail('libro6')">
       <div class="book-num">Libro 06</div>
-      <div class="book-cover" style="background: linear-gradient(135deg, #0a1a2a, #1a3a4a);">
-        <div class="book-cover-bar"></div>
-        <div class="book-cover-text">La Mente Confiable</div>
+      <div class="book-cover" style="background-image: url('06-Crisol.jpeg'); background-size: cover; background-position: center;">
       </div>
       <h3 class="book-title">La Mente Confiable</h3>
       <p class="book-desc">Toma de decisiones en contextos de incertidumbre. Sesgos cognitivos en accidentes industriales y cómo desarrollar una "mente confiable" individual y organizacional.</p>
