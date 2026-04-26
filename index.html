@@ -937,6 +937,14 @@
     .form-row { grid-template-columns: 1fr; }
     .wa-float { bottom: 1.5rem; right: 1.5rem; }
   }
+
+/* ── RECURSOS SECTION (responsive) ── */
+@media (max-width: 768px) {
+  .resources-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -954,6 +962,7 @@
     <li><a href="#casos">Casos</a></li>
     <li><a href="#libros">Publicaciones</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#recursos">Recursos</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
   <a href="#contacto" class="nav-cta">Solicitar diagnóstico</a>
@@ -1344,7 +1353,94 @@
   </div>
 </div>
 
-<!-- CONTACT -->
+
+
+<!-- RECURSOS / BROCHURES -->
+<section class="resources reveal" id="recursos" style="background:#f8f6f2;padding:7rem 4rem;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <p class="section-label">Recursos Descargables</p>
+    <h2 class="section-title">Brochures <em>informativos</em> para conocer más</h2>
+    
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:4rem;" class="resources-grid">
+      
+      <!-- Brochure Consultoría -->
+      <div style="background:white;padding:3rem;border-radius:4px;box-shadow:0 4px 12px rgba(0,0,0,.06);">
+        <div style="display:flex;align-items:center;gap:2rem;margin-bottom:2rem;flex-wrap:wrap;">
+          <img src="QR-Brochure_Invictum_SPA.png" alt="QR Consultoría" style="width:120px;height:120px;border:2px solid var(--gray-light);border-radius:4px;flex-shrink:0;">
+          <div style="flex:1;min-width:200px;">
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:500;margin-bottom:.5rem;color:var(--black);">Servicios de Consultoría</h3>
+            <p style="font-size:.88rem;color:var(--gray);line-height:1.6;">Portafolio completo de servicios especializados, casos de estudio y metodología probada en faenas chilenas.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <button onclick="openEmailModal('consultoria')" style="flex:1;min-width:140px;background:var(--red);color:white;border:none;padding:.9rem 1.5rem;border-radius:2px;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .25s;">
+            Descargar PDF
+          </button>
+          <a href="https://wa.me/56965945170?text=Hola%20V%C3%ADctor%2C%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20los%20servicios%20de%20consultor%C3%ADa" target="_blank" style="flex:1;min-width:140px;background:white;color:var(--black);border:1px solid var(--gray-light);padding:.9rem 1.5rem;border-radius:2px;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;text-align:center;transition:background .25s;display:flex;align-items:center;justify-content:center;">
+            WhatsApp
+          </a>
+        </div>
+        <p style="font-size:.72rem;color:var(--gray);margin-top:1rem;text-align:center;">9 páginas · PDF · 51 KB</p>
+      </div>
+
+      <!-- Brochure Libros -->
+      <div style="background:white;padding:3rem;border-radius:4px;box-shadow:0 4px 12px rgba(0,0,0,.06);">
+        <div style="display:flex;align-items:center;gap:2rem;margin-bottom:2rem;flex-wrap:wrap;">
+          <img src="QR-Libros_Victor_Barrientos.png" alt="QR Libros" style="width:120px;height:120px;border:2px solid var(--gray-light);border-radius:4px;flex-shrink:0;">
+          <div style="flex:1;min-width:200px;">
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:500;margin-bottom:.5rem;color:var(--black);">Colección de Libros Técnicos</h3>
+            <p style="font-size:.88rem;color:var(--gray);line-height:1.6;">Catálogo completo de los 6 libros publicados con ISBN. Incluye descripción, contenido y formas de adquisición.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <button onclick="openEmailModal('libros')" style="flex:1;min-width:140px;background:var(--red);color:white;border:none;padding:.9rem 1.5rem;border-radius:2px;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .25s;">
+            Descargar PDF
+          </button>
+          <a href="https://wa.me/56965945170?text=Hola%20V%C3%ADctor%2C%20me%20gustar%C3%ADa%20informaci%C3%B3n%20sobre%20la%20colecci%C3%B3n%20de%20libros" target="_blank" style="flex:1;min-width:140px;background:white;color:var(--black);border:1px solid var(--gray-light);padding:.9rem 1.5rem;border-radius:2px;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;text-align:center;transition:background .25s;display:flex;align-items:center;justify-content:center;">
+            WhatsApp
+          </a>
+        </div>
+        <p style="font-size:.72rem;color:var(--gray);margin-top:1rem;text-align:center;">7 páginas · PDF · 188 KB</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MODAL EMAIL CAPTURE -->
+<div class="modal-overlay" id="emailModal" onclick="closeEmailModalOutside(event)">
+  <div class="modal" id="emailModalBox" style="max-width:500px;">
+    <div class="modal-header">
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:500;">Descargar Brochure</h3>
+      <button class="modal-close" onclick="closeEmailModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <p style="font-size:.88rem;color:var(--gray);margin-bottom:1.5rem;line-height:1.7;">
+        Para descargar el brochure, por favor ingrese su email. Le enviaremos una copia y lo mantendremos informado sobre nuestros servicios y publicaciones.
+      </p>
+      <div class="form-group">
+        <label style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);font-weight:500;margin-bottom:.4rem;display:block;">Nombre</label>
+        <input type="text" id="downloadName" placeholder="Su nombre" style="width:100%;font-family:'DM Sans',sans-serif;font-size:.9rem;padding:.85rem 1rem;border:1px solid var(--gray-light);border-radius:2px;background:var(--white);color:var(--black);outline:none;">
+      </div>
+      <div class="form-group" style="margin-top:1rem;">
+        <label style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);font-weight:500;margin-bottom:.4rem;display:block;">Email</label>
+        <input type="email" id="downloadEmail" placeholder="correo@empresa.cl" style="width:100%;font-family:'DM Sans',sans-serif;font-size:.9rem;padding:.85rem 1rem;border:1px solid var(--gray-light);border-radius:2px;background:var(--white);color:var(--black);outline:none;">
+      </div>
+      <div class="form-group" style="margin-top:1rem;">
+        <label style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);font-weight:500;margin-bottom:.4rem;display:block;">Empresa (opcional)</label>
+        <input type="text" id="downloadCompany" placeholder="Nombre de su empresa" style="width:100%;font-family:'DM Sans',sans-serif;font-size:.9rem;padding:.85rem 1rem;border:1px solid var(--gray-light);border-radius:2px;background:var(--white);color:var(--black);outline:none;">
+      </div>
+      <button onclick="downloadBrochure()" style="width:100%;margin-top:1.5rem;background:var(--red);color:white;border:none;padding:1rem 2rem;border-radius:2px;font-size:.8rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .25s;">
+        Descargar Brochure
+      </button>
+      <p style="font-size:.7rem;color:var(--gray);text-align:center;margin-top:1rem;line-height:1.5;">
+        Sus datos serán tratados de forma confidencial según nuestra política de privacidad.
+      </p>
+    </div>
+  </div>
+</div>
+
+
 <section class="contact reveal" id="contacto">
   <div class="contact-inner">
     <div>
@@ -1851,6 +1947,101 @@ function sendContactForm() {
   
   window.open('https://wa.me/56965945170?text=' + encodeURIComponent(msg), '_blank');
 }
+
+// ── EMAIL MODAL PARA DESCARGA DE BROCHURES ──
+let currentBrochureType = '';
+
+function openEmailModal(type) {
+  currentBrochureType = type;
+  document.getElementById('emailModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeEmailModal() {
+  document.getElementById('emailModal').classList.remove('active');
+  document.body.style.overflow = '';
+  // Limpiar formulario
+  document.getElementById('downloadName').value = '';
+  document.getElementById('downloadEmail').value = '';
+  document.getElementById('downloadCompany').value = '';
+}
+
+function closeEmailModalOutside(e) {
+  if (e.target === document.getElementById('emailModal')) closeEmailModal();
+}
+
+function downloadBrochure() {
+  const name = document.getElementById('downloadName').value;
+  const email = document.getElementById('downloadEmail').value;
+  const company = document.getElementById('downloadCompany').value;
+  
+  // Validaciones
+  if (!name || !email) {
+    alert('Por favor complete su nombre y email');
+    return;
+  }
+  
+  if (!email.includes('@') || !email.includes('.')) {
+    alert('Por favor ingrese un email válido');
+    return;
+  }
+  
+  // Registrar la descarga (esto se puede conectar a un backend)
+  console.log('Descarga registrada:', {
+    nombre: name,
+    email: email,
+    empresa: company || 'No especificada',
+    brochure: currentBrochureType,
+    fecha: new Date().toISOString()
+  });
+  
+  // Determinar qué archivo descargar
+  const filename = currentBrochureType === 'consultoria' 
+    ? 'Brochure-Invictum-SPA-Consultoria.pdf'
+    : 'Brochure-Libros-Victor-Barrientos.pdf';
+  
+  // Crear link de descarga
+  const link = document.createElement('a');
+  link.href = filename;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  
+  // Mensaje de agradecimiento
+  const brochureName = currentBrochureType === 'consultoria' 
+    ? 'Servicios de Consultoría' 
+    : 'Colección de Libros';
+  
+  alert(`¡Gracias ${name}!\n\nSu brochure "${brochureName}" se está descargando.\n\nHemos registrado su email para mantenerlo informado sobre nuestros servicios y publicaciones.`);
+  
+  // Cerrar modal
+  closeEmailModal();
+  
+  // Opcional: Enviar los datos a un servidor o servicio de email
+  // sendToEmailService(name, email, company, currentBrochureType);
+}
+
+// Función opcional para enviar datos a un servicio externo
+function sendToEmailService(name, email, company, brochureType) {
+  // Ejemplo con FormSubmit.co (gratuito)
+  /*
+  fetch('https://formsubmit.co/victor.barrientos.boccardo@gmail.com', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      name: name,
+      email: email,
+      company: company,
+      brochure: brochureType,
+      _subject: `Nueva descarga de brochure: ${brochureType}`
+    })
+  }).catch(err => console.log('Error al enviar:', err));
+  */
+}
+
 </script>
 </body>
 </html>
