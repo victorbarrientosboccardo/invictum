@@ -1011,6 +1011,22 @@
   }
 }
 
+
+/* === MEJORAS === */
+.service-ico{width:34px;height:34px;stroke:var(--red);fill:none;stroke-width:1.4;margin:1.1rem 0 .2rem;display:block}
+.service-more{margin-top:1.1rem;font-size:.74rem;color:var(--red);font-weight:500;letter-spacing:.02em;display:flex;align-items:center;gap:.35rem}
+.feature-icon svg{width:20px;height:20px;stroke:var(--red);fill:none;stroke-width:1.5}
+.contact-item-icon svg{width:18px;height:18px;stroke:var(--red);fill:none;stroke-width:1.5}
+.about{padding:7rem 4rem;background:#f2ede6}
+.about-inner{display:grid;grid-template-columns:340px 1fr;gap:4rem;align-items:center;max-width:1100px;margin:0 auto}
+.about-photo img{width:100%;border-radius:4px;display:block}
+.about-text .section-title{margin-bottom:1.4rem}
+.about-bio{font-size:.95rem;color:var(--gray);line-height:1.9;font-weight:300;margin-bottom:2rem}
+.about-creds{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gray-light);border:1px solid var(--gray-light);border-radius:4px;overflow:hidden}
+.about-cred{background:#fff;padding:1.4rem 1rem;text-align:center}
+.about-cred .n{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--red);line-height:1}
+.about-cred .t{font-size:.72rem;color:var(--gray);margin-top:.4rem;line-height:1.4}
+@media(max-width:1024px){.about{padding:5rem 2rem}.about-inner{grid-template-columns:1fr;gap:2.5rem}.about-creds{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -1045,6 +1061,8 @@
   <a href="#casos" onclick="closeMobileMenu()">Casos de Éxito</a>
   <a href="#libros" onclick="closeMobileMenu()">Publicaciones</a>
   <a href="#nosotros" onclick="closeMobileMenu()">Nosotros</a>
+  <a href="#recursos" onclick="closeMobileMenu()">Recursos</a>
+  <a href="#sobre-victor" onclick="closeMobileMenu()">Sobre Víctor</a>
   <a href="#contacto" onclick="closeMobileMenu()">Contacto</a>
 </div>
 
@@ -1148,39 +1166,51 @@
   <div class="services-grid">
     <div class="service-card" onclick="openDetail('lom')">
       <div class="service-num">01</div>
+      <svg class="service-ico" viewBox="0 0 32 32"><line x1="5" y1="27" x2="27" y2="27"/><line x1="5" y1="27" x2="5" y2="5"/><rect x="9" y="18" width="4" height="9"/><rect x="15" y="12" width="4" height="15"/><rect x="21" y="7" width="4" height="20"/></svg>
       <h3 class="service-title">Análisis de Costos en Planes Mineros (LOM)</h3>
       <p class="service-desc">Proyectamos los costos de mantenimiento asociados a combustible, lubricantes, neumáticos, herramientas de desgaste, repuestos y servicios para una planificación presupuestaria más exacta.</p>
-      <p class="service-result">↑ Ajustes de 15–20% en proyecciones de gasto</p>
+      <p class="service-result">◆ Ajustes de 15–20% en proyecciones de gasto</p>
+      <p class="service-more">Ver detalle →</p>
     </div>
     <div class="service-card" onclick="openDetail('flotas')">
       <div class="service-num">02</div>
+      <svg class="service-ico" viewBox="0 0 32 32"><rect x="3" y="9" width="15" height="12"/><path d="M18 12h6l4 4v5h-10z"/><circle cx="10" cy="24" r="2.4"/><circle cx="23" cy="24" r="2.4"/></svg>
       <h3 class="service-title">Selección de Flotas de Equipos</h3>
       <p class="service-desc">Evaluación técnica y económica de distintas opciones de equipos, considerando costos de ciclo de vida, cláusulas contractuales y garantías ofrecidas por los proveedores.</p>
-      <p class="service-result">↓ Diferencias de hasta 18% en costos de adquisición</p>
+      <p class="service-result">◆ Diferencias de hasta 18% en costos de adquisición</p>
+      <p class="service-more">Ver detalle →</p>
     </div>
     <div class="service-card" onclick="openDetail('reemplazo')">
       <div class="service-num">03</div>
+      <svg class="service-ico" viewBox="0 0 32 32"><path d="M7 16a9 9 0 0 1 15-6.7l3 2.7"/><path d="M25 16a9 9 0 0 1-15 6.7L7 20"/><polyline points="25 6 25 12 19 12"/><polyline points="7 26 7 20 13 20"/></svg>
       <h3 class="service-title">Estudios de Reemplazo de Equipos</h3>
       <p class="service-desc">Evaluamos el momento óptimo para el reemplazo de equipos con alta recurrencia de fallas, dificultades de abastecimiento o bajo desempeño frente a nuevas tecnologías.</p>
-      <p class="service-result">↓ Reducción de gastos de mantenimiento hasta 21%</p>
+      <p class="service-result">◆ Reducción de gastos de mantenimiento hasta 21%</p>
+      <p class="service-more">Ver detalle →</p>
     </div>
     <div class="service-card" onclick="openDetail('marc')">
       <div class="service-num">04</div>
+      <svg class="service-ico" viewBox="0 0 32 32"><path d="M8 4h11l6 6v18H8z"/><path d="M19 4v6h6"/><polyline points="12 20 15 23 21 16"/></svg>
       <h3 class="service-title">Evaluación de Contratos MARC y LPP</h3>
       <p class="service-desc">Revisamos contratos de mantenimiento celebrados con OEM, identificando oportunidades de optimización, ajustes en tarifas y mejoras en los niveles de soporte técnico y logístico.</p>
-      <p class="service-result">↓ Ahorros identificados de 12–14% en mantenimiento</p>
+      <p class="service-result">◆ Ahorros identificados de 12–14% en mantenimiento</p>
+      <p class="service-more">Ver detalle →</p>
     </div>
     <div class="service-card" onclick="openDetail('neumaticos')">
       <div class="service-num">05</div>
+      <svg class="service-ico" viewBox="0 0 32 32"><circle cx="16" cy="16" r="11"/><circle cx="16" cy="16" r="4"/><line x1="16" y1="5" x2="16" y2="12"/><line x1="16" y1="20" x2="16" y2="27"/><line x1="5" y1="16" x2="12" y2="16"/><line x1="20" y1="16" x2="27" y2="16"/></svg>
       <h3 class="service-title">Gestión de Neumáticos Mineros</h3>
       <p class="service-desc">Estudios de desempeño en terreno y análisis logísticos de reparaciones, con modelos de gestión que determinan el momento óptimo para realizar rotaciones.</p>
-      <p class="service-result">↓ Reducción del 36% en gastos de neumáticos (3 años)</p>
+      <p class="service-result">◆ Reducción del 36% en gastos de neumáticos (3 años)</p>
+      <p class="service-more">Ver detalle →</p>
     </div>
     <div class="service-card" onclick="openDetail('repuestos')">
       <div class="service-num">06</div>
+      <svg class="service-ico" viewBox="0 0 32 32"><path d="M16 4l10 5.5v13L16 28 6 22.5v-13z"/><path d="M6 9.5 16 15l10-5.5"/><line x1="16" y1="15" x2="16" y2="28"/></svg>
       <h3 class="service-title">Optimización de Inversiones en Repuestos</h3>
       <p class="service-desc">Aplicamos modelos estadísticos avanzados para definir niveles óptimos de inventario de repuestos críticos, equilibrando disponibilidad operativa con minimización del capital inmovilizado.</p>
-      <p class="service-result">✦ Economías de escala en adquisición de componentes</p>
+      <p class="service-result">◆ Economías de escala en adquisición de componentes</p>
+      <p class="service-more">Ver detalle →</p>
     </div>
   </div>
 </section>
@@ -1312,7 +1342,7 @@
       </div>
       <h3 class="book-title">El Cerebro del Mantenedor</h3>
       <p class="book-desc">Sesgos cognitivos, neurociencia y economía del comportamiento aplicados al mantenimiento. Cómo los comportamientos inconscientes influyen en las decisiones.</p>
-      <span class="book-tag">Behavioral Science · Mantenimiento</span>
+      <span class="book-tag">Ciencias del Comportamiento · Mantenimiento</span>
     </div>
     <div class="book-card" onclick="openDetail('libro3')">
       <div class="book-num">Libro 03</div>
@@ -1409,28 +1439,28 @@
     <h2 class="section-title" style="font-size: 2rem;">Experiencia operativa que se convierte en ventaja competitiva</h2>
     <div class="approach-features">
       <div class="feature">
-        <div class="feature-icon">⛏️</div>
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M3 20 10 8l4 6 3-4 5 10z"/></svg></div>
         <div>
           <h4>Especialización minera profunda</h4>
           <p>Red de profesionales con amplia trayectoria operativa en minas de cobre y hierro en Chile. No somos consultores genéricos.</p>
         </div>
       </div>
       <div class="feature">
-        <div class="feature-icon">📊</div>
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><line x1="4" y1="20" x2="20" y2="20"/><rect x="6" y="12" width="3" height="8"/><rect x="11" y="8" width="3" height="12"/><rect x="16" y="5" width="3" height="15"/></svg></div>
         <div>
           <h4>Metodologías cuantitativas rigurosas</h4>
           <p>Modelos estadísticos avanzados, simulaciones Monte Carlo y análisis de ciclo de vida que respaldan cada recomendación.</p>
         </div>
       </div>
       <div class="feature">
-        <div class="feature-icon">🎯</div>
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1"/></svg></div>
         <div>
           <h4>Soluciones a medida</h4>
           <p>Cada proyecto se diseña según las condiciones específicas de su operación, flota y contratos vigentes.</p>
         </div>
       </div>
       <div class="feature">
-        <div class="feature-icon">📚</div>
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M5 4h9a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2V4z"/><path d="M16 6h3v13"/></svg></div>
         <div>
           <h4>Conocimiento publicado y validado</h4>
           <p>Autor de seis libros técnicos sobre mantenimiento minero, lo que refleja profundidad intelectual y compromiso con la disciplina.</p>
@@ -1528,6 +1558,25 @@
 </div>
 
 
+<!-- SOBRE VÍCTOR -->
+<section class="about reveal" id="sobre-victor">
+  <div class="about-inner">
+    <div class="about-photo">
+      <img src="victor-barrientos.jpg" alt="Víctor Barrientos Boccardo" loading="lazy">
+    </div>
+    <div class="about-text">
+      <p class="section-label">Sobre Víctor</p>
+      <h2 class="section-title">Víctor Barrientos <em>Boccardo</em></h2>
+      <p class="about-bio">Fundador y consultor líder de Invictum SPA, con más de dos décadas de experiencia operativa en el mantenimiento de flotas mineras en Chile. Autor de seis libros técnicos publicados por Crisol Editorial, combina rigor metodológico con experiencia real de faena en análisis de costos, selección de flotas, estudios de reemplazo y optimización de recursos en minería a cielo abierto.</p>
+      <div class="about-creds">
+        <div class="about-cred"><div class="n">6</div><div class="t">Libros publicados · Crisol Editorial</div></div>
+        <div class="about-cred"><div class="n">Mgtr.</div><div class="t">PUCV &amp; USM · Ing. U. de Chile</div></div>
+        <div class="about-cred"><div class="n">+20</div><div class="t">Años en mantenimiento minero</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="contact reveal" id="contacto">
   <div class="contact-inner">
     <div>
@@ -1538,22 +1587,22 @@
       </p>
       <div class="contact-info">
         <div class="contact-item">
-          <div class="contact-item-icon">👤</div>
+          <div class="contact-item-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5 21v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1"/></svg></div>
           <div>
             <strong>Víctor Barrientos Boccardo</strong><br>
             <span style="font-size:.82rem; color: var(--gray)">Líder de Proyectos · Mgtr. PUCV & USM / Ing. U. Chile</span>
           </div>
         </div>
         <div class="contact-item">
-          <div class="contact-item-icon">📱</div>
+          <div class="contact-item-icon"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg></div>
           <a href="tel:+56965945170">+56 9 6594 5170</a>
         </div>
         <div class="contact-item">
-          <div class="contact-item-icon">✉️</div>
+          <div class="contact-item-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
           <a href="mailto:victor.barrientos.boccardo@gmail.com">victor.barrientos.boccardo@gmail.com</a>
         </div>
         <div class="contact-item">
-          <div class="contact-item-icon">💬</div>
+          <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-4 4V5z"/></svg></div>
           <a href="https://wa.me/56965945170" target="_blank">WhatsApp disponible</a>
         </div>
       </div>
@@ -1675,7 +1724,7 @@
           <h4 id="modalTitle"></h4>
           <p id="modalNum"></p>
         </div>
-        <div class="modal-price">$XX.990</div>
+        <div class="modal-price" style="font-size:1.2rem;letter-spacing:.02em;">Consultar</div>
       </div>
       <span class="modal-label">Seleccione su método de pago</span>
       <button class="mp-btn" onclick="goMercadoPago()">
