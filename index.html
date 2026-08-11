@@ -1050,6 +1050,21 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
 .footer-col h5{ color:var(--gold)!important; }
 .footer-top{ grid-template-columns:1.7fr 1fr 1fr 1fr 1fr!important; gap:2.4rem!important; }
 @media(max-width:1024px){ .footer-top{ grid-template-columns:1fr 1fr!important; } }
+
+/* === SECCIÓN ECOSISTEMA === */
+.ecosistema{background:#0d1b2a;padding:7rem 4rem}
+.eco-inner{max-width:1100px;margin:0 auto}
+.eco-lead{text-align:center;color:rgba(255,255,255,.55);font-size:.95rem;font-weight:300;max-width:560px;margin:0 auto 3rem;line-height:1.7}
+.eco-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.eco-card{background:#14273b;border:1px solid rgba(255,255,255,.08);border-top:3px solid var(--acc);border-radius:6px;padding:2rem 1.8rem;display:flex;flex-direction:column}
+.eco-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:#f8f6f2;letter-spacing:.02em;line-height:1.1}
+.eco-name b{color:var(--acc);font-weight:600}
+.eco-role{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:.4rem 0 1rem}
+.eco-d{font-size:.86rem;color:rgba(255,255,255,.62);line-height:1.7;flex:1;margin-bottom:1.4rem}
+.eco-cta{font-size:.72rem;letter-spacing:.06em;font-weight:500;color:var(--acc);text-decoration:none;border:1px solid var(--acc);padding:.65rem 1rem;border-radius:2px;text-align:center;transition:all .25s}
+.eco-cta:hover{background:var(--acc);color:#0d1b2a}
+.eco-here{color:rgba(255,255,255,.4);border-color:rgba(255,255,255,.15)}
+@media(max-width:900px){.ecosistema{padding:5rem 2rem}.eco-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -1069,6 +1084,7 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#recursos">Recursos</a></li>
     <li><a href="#sobre-victor">Sobre Víctor</a></li>
+    <li><a href="#ecosistema">Ecosistema</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
   <a href="#contacto" class="nav-cta">Solicitar diagnóstico</a>
@@ -1086,6 +1102,7 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
   <a href="#nosotros" onclick="closeMobileMenu()">Nosotros</a>
   <a href="#recursos" onclick="closeMobileMenu()">Recursos</a>
   <a href="#sobre-victor" onclick="closeMobileMenu()">Sobre Víctor</a>
+  <a href="#ecosistema" onclick="closeMobileMenu()">Ecosistema</a>
   <a href="#contacto" onclick="closeMobileMenu()">Contacto</a>
 </div>
 
@@ -1595,6 +1612,35 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
         <div class="about-cred"><div class="n">6</div><div class="t">Libros publicados · Crisol Editorial</div></div>
         <div class="about-cred"><div class="n">Mgtr.</div><div class="t">PUCV &amp; USM · Ing. U. de Chile</div></div>
         <div class="about-cred"><div class="n">+20</div><div class="t">Años en mantenimiento minero</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ECOSISTEMA INVICTUM -->
+<section class="ecosistema reveal" id="ecosistema">
+  <div class="eco-inner">
+    <p class="section-label" style="color:var(--gold);text-align:center;">Ecosistema Invictum</p>
+    <h2 class="section-title" style="color:#f8f6f2;text-align:center;max-width:760px;margin:0 auto .8rem;">Una casa, <em style="color:var(--gold);font-style:italic;">tres soluciones</em></h2>
+    <p class="eco-lead">De la consultoría nacen herramientas que resuelven problemas concretos del rubro minero. No solo asesoramos: construimos soluciones.</p>
+    <div class="eco-grid">
+      <div class="eco-card" style="--acc:var(--red)">
+        <div class="eco-name">Invictum <b>SPA</b></div>
+        <div class="eco-role">Consultoría · Marca madre</div>
+        <p class="eco-d">Asesoría en confiabilidad, costos de mantenimiento y reemplazo de equipos para minería a cielo abierto. La autoridad técnica que respalda a los productos.</p>
+        <span class="eco-cta eco-here">Estás aquí</span>
+      </div>
+      <div class="eco-card" style="--acc:#2a9d8f">
+        <div class="eco-name">Mante<b>Work</b></div>
+        <div class="eco-role">Producto · Empleo validado</div>
+        <p class="eco-d">Portal de validación del canal de empleos técnicos mineros. Solo los avisos verificados de empresas reales llegan a los técnicos por WhatsApp.</p>
+        <a class="eco-cta" href="https://mantework.com" target="_blank" rel="noopener noreferrer">Visitar MANTEWORK →</a>
+      </div>
+      <div class="eco-card" style="--acc:#e0762e">
+        <div class="eco-name">Fatality<b>Check</b></div>
+        <div class="eco-role">Herramienta · Seguridad</div>
+        <p class="eco-d">Asesor de IA que entrega los controles críticos y sesgos cognitivos según la tarea a ejecutar, basado en informes de investigación de accidentes fatales en minería.</p>
+        <a class="eco-cta" href="https://fatalitycheck.com" target="_blank" rel="noopener noreferrer">Visitar FatalityCheck →</a>
       </div>
     </div>
   </div>
