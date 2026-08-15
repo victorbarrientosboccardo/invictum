@@ -47,6 +47,8 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
+  // Modo de consentimiento (Ley 21.719): no medir hasta que el usuario acepte
+  gtag('consent', 'default', { 'analytics_storage': 'denied' });
   gtag('config', 'G-T7ET4G6HL7');
 </script>
 <meta name="description" content="Reducimos costos de mantenimiento minero entre 15% y 36% mediante análisis técnico-económico riguroso. Especialistas en LOM, flotas, neumáticos y reemplazo de equipos.">
@@ -1492,7 +1494,7 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
         </div>
         <div class="contact-item">
           <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-4 4V5z"/></svg></div>
-          <a href="https://wa.me/56965945170" target="_blank">WhatsApp disponible</a>
+          <a href="https://wa.me/56965945170" target="_blank" rel="noopener noreferrer">WhatsApp disponible</a>
         </div>
       </div>
     </div>
@@ -1596,7 +1598,7 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
 <div class="wa-float">
   <div class="wa-bubble" id="waBubble">¿Consultas sobre servicios o libros?</div>
   <div style="position:relative;">
-    <a href="https://wa.me/56965945170?text=Hola%20V%C3%ADctor%2C%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Invictum%20SPA" target="_blank" class="wa-btn" id="waBtn">
+    <a href="https://wa.me/56965945170?text=Hola%20V%C3%ADctor%2C%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Invictum%20SPA" target="_blank" rel="noopener noreferrer" class="wa-btn" id="waBtn">
       <svg viewBox="0 0 24 24" width="28" height="28" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.857L.057 23.75a.5.5 0 0 0 .614.63l6.094-1.598A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.863 9.863 0 0 1-5.03-1.373l-.36-.214-3.733.979.997-3.645-.234-.374A9.86 9.86 0 0 1 2.1 12C2.1 6.527 6.527 2.1 12 2.1S21.9 6.527 21.9 12 17.473 21.9 12 21.9z"/></svg>
     </a>
     <span class="wa-pulse"></span>
@@ -1834,7 +1836,7 @@ function openDetail(id) {
   // Actions
   bodyHTML += '<div class="detail-modal-actions">';
   const waUrl = 'https://wa.me/56965945170?text=' + encodeURIComponent(d.waMsg);
-  bodyHTML += `<a href="${waUrl}" target="_blank" class="detail-btn-wa">WhatsApp →</a>`;
+  bodyHTML += `<a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="detail-btn-wa">WhatsApp →</a>`;
   if (!d.buyLabel) {
     bodyHTML += `<button class="detail-btn-buy" onclick="window.location='#contacto';closeDetail();">Contactar a Víctor →</button>`;
   }
@@ -1967,6 +1969,41 @@ function sendToEmailService(name, email, company, brochureType) {
   */
 }
 
+</script>
+<!-- BANNER DE COOKIES (Ley 21.719) -->
+<style>
+  .cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#0d1b2a;color:#f8f6f2;padding:1.1rem 1.5rem;display:none;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;border-top:2px solid #b89849;box-shadow:0 -4px 20px rgba(0,0,0,.25);font-family:'DM Sans',sans-serif}
+  .cookie-banner.show{display:flex}
+  .cookie-text{font-size:.85rem;color:rgba(248,246,242,.85);margin:0;max-width:720px;line-height:1.6}
+  .cookie-text a{color:#b89849;text-decoration:underline}
+  .cookie-actions{display:flex;gap:.7rem;flex-shrink:0}
+  .cookie-btn{font-size:.78rem;letter-spacing:.03em;font-weight:600;padding:.6rem 1.3rem;border-radius:3px;cursor:pointer;border:none;font-family:inherit}
+  .cookie-reject{background:transparent;color:#c9d2dc;border:1px solid rgba(255,255,255,.25)}
+  .cookie-reject:hover{border-color:#f8f6f2;color:#f8f6f2}
+  .cookie-accept{background:#c8102e;color:#fff}
+  .cookie-accept:hover{background:#9b0d23}
+  @media(max-width:640px){.cookie-banner{flex-direction:column;align-items:stretch;text-align:center}.cookie-actions{justify-content:center}}
+</style>
+<div class="cookie-banner" id="cookieBanner">
+  <p class="cookie-text">Usamos cookies de análisis (Google Analytics) para entender cómo se usa el sitio y mejorarlo. Puedes aceptarlas o rechazarlas. Consulta nuestra <a href="privacidad.html">Política de Privacidad y Cookies</a>.</p>
+  <div class="cookie-actions">
+    <button class="cookie-btn cookie-reject" onclick="setCookieConsent(false)">Rechazar</button>
+    <button class="cookie-btn cookie-accept" onclick="setCookieConsent(true)">Aceptar</button>
+  </div>
+</div>
+<script>
+  (function(){
+    try{
+      var c = localStorage.getItem('invictum_cookie_consent');
+      if (c === 'granted') { gtag('consent','update',{'analytics_storage':'granted'}); }
+      else if (c !== 'denied') { var b=document.getElementById('cookieBanner'); if(b) b.classList.add('show'); }
+    }catch(e){ var b=document.getElementById('cookieBanner'); if(b) b.classList.add('show'); }
+  })();
+  function setCookieConsent(ok){
+    try{ localStorage.setItem('invictum_cookie_consent', ok?'granted':'denied'); }catch(e){}
+    if (ok) gtag('consent','update',{'analytics_storage':'granted'});
+    var b=document.getElementById('cookieBanner'); if(b) b.classList.remove('show');
+  }
 </script>
 </body>
 </html>
