@@ -298,7 +298,7 @@
     top: 0; right: 0;
     width: 40%;
     height: 100%;
-    background: url("pexels-kateryna-babaieva-2760242-min.jpg") center/cover;
+    background: url("pexels-kateryna-babaieva-2760242-min.webp") center/cover;
     opacity: .03;
     pointer-events: none;
   }
@@ -596,7 +596,7 @@
     bottom: 0; left: 0;
     width: 100%;
     height: 40%;
-    background: url("pexels-dapurmelodi-1009926-min.jpg") center/cover;
+    background: url("pexels-dapurmelodi-1009926-min.webp") center/cover;
     opacity: .03;
     pointer-events: none;
   }
@@ -1011,7 +1011,6 @@
   }
 }
 
-
 /* === MEJORAS === */
 .service-ico{width:34px;height:34px;stroke:var(--red);fill:none;stroke-width:1.4;margin:1.1rem 0 .2rem;display:block}
 .service-more{margin-top:1.1rem;font-size:.74rem;color:var(--red);font-weight:500;letter-spacing:.02em;display:flex;align-items:center;gap:.35rem}
@@ -1048,7 +1047,7 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
 .impact-grid{ border-top-color:rgba(255,255,255,.12)!important; }
 .ticker-item::before{ color:var(--gold)!important; }
 .footer-col h5{ color:var(--gold)!important; }
-.footer-top{ grid-template-columns:1.7fr 1fr 1fr 1fr 1fr!important; gap:2.4rem!important; }
+.footer-top{ grid-template-columns:1.5fr 1fr 1fr 1fr 1fr 1fr!important; gap:1.8rem!important; }
 @media(max-width:1024px){ .footer-top{ grid-template-columns:1fr 1fr!important; } }
 
 /* === SECCIÓN ECOSISTEMA === */
@@ -1065,7 +1064,33 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
 .eco-cta:hover{background:var(--acc);color:#0d1b2a}
 .eco-here{color:rgba(255,255,255,.4);border-color:rgba(255,255,255,.15)}
 @media(max-width:900px){.ecosistema{padding:5rem 2rem}.eco-grid{grid-template-columns:1fr}}
+
+/* === Publicaciones compacto: portadas + detalle al clic === */
+.books-grid .book-desc{ display:none !important; }
+.books-grid .book-card{ cursor:pointer; }
+.books-grid .book-card .book-tag{ margin-top:.5rem; }
+.books-grid .book-card::after{ content:'Ver detalle →'; display:block; margin-top:1rem; font-size:.72rem; letter-spacing:.04em; color:var(--red); font-weight:500; }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Invictum SPA",
+  "description": "Consultoría de mantenimiento minero en Chile. Reducción de costos entre 15% y 36% mediante análisis técnico-económico riguroso.",
+  "url": "https://www.invictum.cl/",
+  "email": "contacto@invictum.cl",
+  "telephone": "+56965945170",
+  "areaServed": "CL",
+  "knowsAbout": ["Mantenimiento minero","Análisis de costos LOM","Selección de flotas","Gestión de neumáticos","Reemplazo de equipos","Contratos MARC y LPP"],
+  "founder": {
+    "@type": "Person",
+    "name": "Víctor Barrientos Boccardo",
+    "jobTitle": "Fundador y consultor líder",
+    "alumniOf": ["Pontificia Universidad Católica de Valparaíso","Universidad Técnica Federico Santa María","Universidad de Chile"],
+    "knowsAbout": ["Mantenimiento de equipos mineros","Confiabilidad","Gestión de activos","Sesgos cognitivos en la toma de decisiones"]
+  }
+}
+</script>
 </head>
 <body>
 
@@ -1082,12 +1107,9 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
     <li><a href="#casos">Casos</a></li>
     <li><a href="#libros">Publicaciones</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
-    <li><a href="#recursos">Recursos</a></li>
-    <li><a href="#sobre-victor">Sobre Víctor</a></li>
     <li><a href="#ecosistema">Ecosistema</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
-  <a href="#contacto" class="nav-cta">Solicitar diagnóstico</a>
   <button class="mobile-menu-btn" id="mobileMenuBtn">
     <span></span>
     <span></span>
@@ -1100,8 +1122,6 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
   <a href="#casos" onclick="closeMobileMenu()">Casos de Éxito</a>
   <a href="#libros" onclick="closeMobileMenu()">Publicaciones</a>
   <a href="#nosotros" onclick="closeMobileMenu()">Nosotros</a>
-  <a href="#recursos" onclick="closeMobileMenu()">Recursos</a>
-  <a href="#sobre-victor" onclick="closeMobileMenu()">Sobre Víctor</a>
   <a href="#ecosistema" onclick="closeMobileMenu()">Ecosistema</a>
   <a href="#contacto" onclick="closeMobileMenu()">Contacto</a>
 </div>
@@ -1137,26 +1157,12 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
       </div>
     </div>
     <div class="hero-actions">
-      <a href="#contacto" class="btn-primary">Agendar diagnóstico</a>
+      <a href="#contacto" class="btn-primary">Contactar a Víctor</a>
       <a href="#casos" class="btn-secondary">Ver casos de éxito →</a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-num">15–20%</div>
-        <div class="stat-label">Mejora en precisión de presupuestos LOM</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">36%</div>
-        <div class="stat-label">Reducción en costos de neumáticos (3 años)</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">21%</div>
-        <div class="stat-label">Ahorro por reemplazo optimizado</div>
-      </div>
     </div>
   </div>
   <div class="hero-right">
-    <img src="pexels-vlad-chetan-2892618-min.jpg" alt="Operación minera a cielo abierto" />
+    <img src="pexels-vlad-chetan-2892618-min.webp" alt="Operación minera a cielo abierto" fetchpriority="high" decoding="async" />
     <div class="hero-right-overlay"></div>
     <div class="hero-tag">
       <strong>Invictum SPA</strong>
@@ -1165,35 +1171,6 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
   </div>
 </section>
 
-<!-- TRUST BAND -->
-<div class="trust-band">
-  <p>
-    Trabajamos con <strong>operaciones mineras líderes en Chile</strong> · Credenciales: PUCV, USM, Universidad de Chile · <strong>Autor de 6 libros técnicos</strong> sobre mantenimiento minero
-  </p>
-</div>
-
-<!-- TICKER -->
-<div class="ticker">
-  <div class="ticker-inner">
-    <span class="ticker-item">Análisis de Costos LOM</span>
-    <span class="ticker-item">Selección de Flotas</span>
-    <span class="ticker-item">Estudios de Reemplazo</span>
-    <span class="ticker-item">Contratos MARC y LPP</span>
-    <span class="ticker-item">Gestión de Neumáticos</span>
-    <span class="ticker-item">Optimización de Repuestos</span>
-    <span class="ticker-item">Minería del Cobre</span>
-    <span class="ticker-item">Minería del Hierro</span>
-    <span class="ticker-item">Análisis de Costos LOM</span>
-    <span class="ticker-item">Selección de Flotas</span>
-    <span class="ticker-item">Estudios de Reemplazo</span>
-    <span class="ticker-item">Contratos MARC y LPP</span>
-    <span class="ticker-item">Gestión de Neumáticos</span>
-    <span class="ticker-item">Optimización de Repuestos</span>
-    <span class="ticker-item">Minería del Cobre</span>
-    <span class="ticker-item">Minería del Hierro</span>
-  </div>
-</div>
-
 <!-- SERVICES -->
 <section class="services reveal" id="servicios">
   <div class="services-header">
@@ -1201,7 +1178,7 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
       <p class="section-label">Nuestros Servicios</p>
       <h2 class="section-title">Soluciones especializadas para la <em>industria minera</em></h2>
     </div>
-    <a href="#contacto" class="btn-secondary">Solicitar propuesta →</a>
+    <a href="#contacto" class="btn-secondary">Contactar a Víctor →</a>
   </div>
   <div class="services-grid">
     <div class="service-card" onclick="openDetail('lom')">
@@ -1305,57 +1282,8 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
         </div>
       </div>
     </div>
-
-    <div class="case-card">
-      <p class="case-industry">Minería del Cobre · Región Central</p>
-      <h3 class="case-title">Evaluación de reemplazo con ahorro de 21%</h3>
-      <p class="case-challenge">
-        Flota de 35 camiones con alta indisponibilidad y crecientes costos de mantenimiento requería decisión de reemplazo vs. overhaul.
-      </p>
-      <div class="case-result">
-        <div class="case-result-num">21%</div>
-        <div class="case-result-label">Reducción en gastos de mantenimiento</div>
-      </div>
-      <div class="case-metrics">
-        <div class="case-metric">
-          <div class="case-metric-num">VAN · VAC · CAE</div>
-          <div class="case-metric-label">Metodologías aplicadas</div>
-        </div>
-        <div class="case-metric">
-          <div class="case-metric-num">3 alternativas</div>
-          <div class="case-metric-label">Evaluadas</div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
-
-<!-- DARK IMPACT BAND -->
-<div class="dark-band reveal" id="impacto">
-  <p class="section-label">Resultados Comprobados</p>
-  <h2 class="section-title">
-    Décadas de experiencia operativa convertidas en <em>valor cuantificable</em>
-  </h2>
-  <div class="impact-grid">
-    <div class="impact-item">
-      <div class="impact-num">15–20%</div>
-      <div class="impact-label">Mejora en precisión de presupuestos de mantenimiento LOM</div>
-    </div>
-    <div class="impact-item">
-      <div class="impact-num">18%</div>
-      <div class="impact-label">Diferencia en costos de adquisición entre proveedores identificada mediante benchmarking</div>
-    </div>
-    <div class="impact-item">
-      <div class="impact-num">36%</div>
-      <div class="impact-label">Reducción sostenida en gasto de neumáticos durante tres años consecutivos</div>
-    </div>
-    <div class="impact-item">
-      <div class="impact-num">40%</div>
-      <div class="impact-label">Del valor de un equipo nuevo recuperado mediante restauraciones integrales</div>
-    </div>
-  </div>
-</div>
-
 <!-- BOOKS -->
 <section class="books reveal" id="libros">
   <div class="books-header">
@@ -1364,13 +1292,13 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
       <h2 class="section-title">Conocimiento especializado para <em>profesionales del sector</em></h2>
     </div>
     <p class="books-intro">
-      Una colección de libros técnicos que combinan rigor metodológico con experiencia práctica en faenas mineras reales. Disponibles individualmente o como colección completa.
+      Seis libros técnicos publicados con ISBN, que combinan rigor metodológico con experiencia práctica en faenas mineras reales. Haz clic en cada portada para ver su detalle.
     </p>
   </div>
   <div class="books-grid">
     <div class="book-card" onclick="openDetail('libro1')">
       <div class="book-num">Libro 01</div>
-      <div class="book-cover" style="background-image: url('01-Crisol.jpg'); background-size: cover; background-position: center;">
+      <div class="book-cover" style="background-image: url('01-Crisol.webp'); background-size: cover; background-position: center;">
       </div>
       <h3 class="book-title">Mantenimiento de Equipos en Minas a Cielo Abierto</h3>
       <p class="book-desc">Liderazgo, innovación, neumáticos, estimación de costos, externalización y reemplazo de equipos. Seis capítulos con casos reales en faenas mineras.</p>
@@ -1378,7 +1306,7 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
     </div>
     <div class="book-card" onclick="openDetail('libro2')">
       <div class="book-num">Libro 02</div>
-      <div class="book-cover" style="background-image: url('02-Crisol.jpg'); background-size: cover; background-position: center;">
+      <div class="book-cover" style="background-image: url('02-Crisol.webp'); background-size: cover; background-position: center;">
       </div>
       <h3 class="book-title">El Cerebro del Mantenedor</h3>
       <p class="book-desc">Sesgos cognitivos, neurociencia y economía del comportamiento aplicados al mantenimiento. Cómo los comportamientos inconscientes influyen en las decisiones.</p>
@@ -1386,7 +1314,7 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
     </div>
     <div class="book-card" onclick="openDetail('libro3')">
       <div class="book-num">Libro 03</div>
-      <div class="book-cover" style="background-image: url('03-Crisol.jpg'); background-size: cover; background-position: center;">
+      <div class="book-cover" style="background-image: url('03-Crisol.webp'); background-size: cover; background-position: center;">
       </div>
       <h3 class="book-title">Que la Producción no se Detenga</h3>
       <p class="book-desc">Gestión óptima de repuestos con teoría de colas, cadenas de Markov y simulación Monte Carlo. Cómo determinar el pool de componentes ideal para su flota.</p>
@@ -1394,7 +1322,7 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
     </div>
     <div class="book-card" onclick="openDetail('libro4')">
       <div class="book-num">Libro 04</div>
-      <div class="book-cover" style="background-image: url('04-Crisol.jpg'); background-size: cover; background-position: center;">
+      <div class="book-cover" style="background-image: url('04-Crisol.webp'); background-size: cover; background-position: center;">
       </div>
       <h3 class="book-title">Reemplazo de Camiones Mineros</h3>
       <p class="book-desc">VAN, VAC, CAE y VAE aplicados al reemplazo de flotas. Incluye camiones autónomos, costos operacionales y metodologías de evaluación de proyectos de inversión.</p>
@@ -1402,7 +1330,7 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
     </div>
     <div class="book-card" onclick="openDetail('libro5')">
       <div class="book-num">Libro 05</div>
-      <div class="book-cover" style="background-image: url('05-Crisol.jpg'); background-size: cover; background-position: center;">
+      <div class="book-cover" style="background-image: url('05-Crisol.webp'); background-size: cover; background-position: center;">
       </div>
       <h3 class="book-title">Reemplazo de Componentes</h3>
       <p class="book-desc">Determinación de la frecuencia óptima de reemplazo de componentes. Tipos de reparaciones, TBO, costos por unidad de tiempo y casos numéricos detallados.</p>
@@ -1410,36 +1338,36 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
     </div>
     <div class="book-card" onclick="openDetail('libro6')">
       <div class="book-num">Libro 06</div>
-      <div class="book-cover" style="background-image: url('06-Crisol.jpeg'); background-size: cover; background-position: center;">
+      <div class="book-cover" style="background-image: url('06-Crisol.webp'); background-size: cover; background-position: center;">
       </div>
       <h3 class="book-title">La Mente Confiable</h3>
       <p class="book-desc">Toma de decisiones en contextos de incertidumbre. Sesgos cognitivos en accidentes industriales y cómo desarrollar una "mente confiable" individual y organizacional.</p>
       <span class="book-tag">Decisiones · Excelencia operacional</span>
     </div>
-    <div class="pack-card">
-      <div>
-        <p class="section-label">Edición Especial</p>
-        <h3 class="pack-title">Colección <em>4 Pack</em><br>Mantenimiento Minero</h3>
-        <p class="pack-desc">
-          Este exclusivo pack reúne en una sola edición el conocimiento fundamental para abordar con éxito los principales desafíos del mantenimiento en minería a cielo abierto. Presentado en formato de caja exclusiva — ideal para programas de capacitación, formación continua o como obsequio institucional de alto valor corporativo.
-        </p>
-        <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;">
-          <button onclick="openModal('Colección 4 Pack — Mantenimiento Minero','linear-gradient(135deg,#1a1200,#4a3800)','4 Pack')" style="display:inline-flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:none;border-bottom:1px solid var(--gold);background:none;cursor:pointer;padding-bottom:2px;">Comprar con tarjeta →</button>
-          <a href="https://wa.me/56965945170?text=Hola%20V%C3%ADctor%2C%20me%20interesa%20la%20Colecci%C3%B3n%204%20Pack%20Mantenimiento%20Minero" target="_blank" class="pack-cta" style="border-color:#25d366;color:#25d366;">WhatsApp →</a>
-        </div>
-      </div>
-      <div class="pack-right">
-        <div class="pack-book" style="background-image: url('01-Crisol.jpg');"></div>
-        <div class="pack-book" style="background-image: url('03-Crisol.jpg');"></div>
-        <div class="pack-book" style="background-image: url('04-Crisol.jpg');"></div>
-        <div class="pack-book" style="background-image: url('05-Crisol.jpg');"></div>
+  </div>
+</section>
+
+<!-- SOBRE VÍCTOR -->
+<section class="about reveal" id="nosotros">
+  <div class="about-inner">
+    <div class="about-photo">
+      <img src="victor-barrientos.webp" alt="Víctor Barrientos Boccardo" loading="lazy">
+    </div>
+    <div class="about-text">
+      <p class="section-label">Quiénes somos</p>
+      <h2 class="section-title">Víctor Barrientos <em>Boccardo</em></h2>
+      <p class="about-bio">Fundador y consultor líder de Invictum SPA, con más de dos décadas de experiencia operativa en el mantenimiento de flotas mineras en Chile. Autor de seis libros técnicos publicados por Crisol Editorial, combina rigor metodológico con experiencia real de faena en análisis de costos, selección de flotas, estudios de reemplazo y optimización de recursos en minería a cielo abierto.</p>
+      <div class="about-creds">
+        <div class="about-cred"><div class="n">6</div><div class="t">Libros publicados · Crisol Editorial</div></div>
+        <div class="about-cred"><div class="n">Mgtr.</div><div class="t">PUCV &amp; USM · Ing. U. de Chile</div></div>
+        <div class="about-cred"><div class="n">+20</div><div class="t">Años en mantenimiento minero</div></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- APPROACH -->
-<div class="approach reveal" id="nosotros">
+<div class="approach reveal">
   <div class="approach-left">
     <p class="section-label">Nuestra Metodología</p>
     <h2 class="section-title">Rigor técnico.<br><em>Decisiones</em><br>de impacto.</h2>
@@ -1509,114 +1437,6 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
     </div>
   </div>
 </div>
-
-
-
-<!-- RECURSOS / BROCHURES -->
-<section class="resources reveal" id="recursos" style="background:#f8f6f2;padding:7rem 4rem;">
-  <div style="max-width:1200px;margin:0 auto;">
-    <p class="section-label">Recursos Descargables</p>
-    <h2 class="section-title">Brochures <em>informativos</em> para conocer más</h2>
-    
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:4rem;" class="resources-grid">
-      
-      <!-- Brochure Consultoría -->
-      <div style="background:white;padding:3rem;border-radius:4px;box-shadow:0 4px 12px rgba(0,0,0,.06);">
-        <div style="display:flex;align-items:center;gap:2rem;margin-bottom:2rem;flex-wrap:wrap;">
-          <img loading="lazy" src="QR-Brochure_Invictum_SPA.png" alt="QR Consultoría" style="width:120px;height:120px;border:2px solid var(--gray-light);border-radius:4px;flex-shrink:0;" loading="lazy">
-          <div style="flex:1;min-width:200px;">
-            <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:500;margin-bottom:.5rem;color:var(--black);">Servicios de Consultoría</h3>
-            <p style="font-size:.88rem;color:var(--gray);line-height:1.6;">Portafolio completo de servicios especializados, casos de estudio y metodología probada en faenas chilenas.</p>
-          </div>
-        </div>
-        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-          <button onclick="openEmailModal('consultoria')" style="flex:1;min-width:140px;background:var(--red);color:white;border:none;padding:.9rem 1.5rem;border-radius:2px;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .25s;">
-            Descargar PDF
-          </button>
-          <a href="https://wa.me/56965945170?text=Hola%20V%C3%ADctor%2C%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20los%20servicios%20de%20consultor%C3%ADa" target="_blank" style="flex:1;min-width:140px;background:white;color:var(--black);border:1px solid var(--gray-light);padding:.9rem 1.5rem;border-radius:2px;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;text-align:center;transition:background .25s;display:flex;align-items:center;justify-content:center;">
-            WhatsApp
-          </a>
-        </div>
-        <p style="font-size:.72rem;color:var(--gray);margin-top:1rem;text-align:center;">9 páginas · PDF · 51 KB</p>
-      </div>
-
-      <!-- Brochure Libros -->
-      <div style="background:white;padding:3rem;border-radius:4px;box-shadow:0 4px 12px rgba(0,0,0,.06);">
-        <div style="display:flex;align-items:center;gap:2rem;margin-bottom:2rem;flex-wrap:wrap;">
-          <img loading="lazy" src="QR-Libros_Victor_Barrientos.png" alt="QR Libros" style="width:120px;height:120px;border:2px solid var(--gray-light);border-radius:4px;flex-shrink:0;" loading="lazy">
-          <div style="flex:1;min-width:200px;">
-            <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:500;margin-bottom:.5rem;color:var(--black);">Colección de Libros Técnicos</h3>
-            <p style="font-size:.88rem;color:var(--gray);line-height:1.6;">Catálogo completo de los 6 libros publicados con ISBN. Incluye descripción, contenido y formas de adquisición.</p>
-          </div>
-        </div>
-        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-          <button onclick="openEmailModal('libros')" style="flex:1;min-width:140px;background:var(--red);color:white;border:none;padding:.9rem 1.5rem;border-radius:2px;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .25s;">
-            Descargar PDF
-          </button>
-          <a href="https://wa.me/56965945170?text=Hola%20V%C3%ADctor%2C%20me%20gustar%C3%ADa%20informaci%C3%B3n%20sobre%20la%20colecci%C3%B3n%20de%20libros" target="_blank" style="flex:1;min-width:140px;background:white;color:var(--black);border:1px solid var(--gray-light);padding:.9rem 1.5rem;border-radius:2px;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;text-align:center;transition:background .25s;display:flex;align-items:center;justify-content:center;">
-            WhatsApp
-          </a>
-        </div>
-        <p style="font-size:.72rem;color:var(--gray);margin-top:1rem;text-align:center;">7 páginas · PDF · 188 KB</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- MODAL EMAIL CAPTURE -->
-<div class="modal-overlay" id="emailModal" onclick="closeEmailModalOutside(event)">
-  <div class="modal" id="emailModalBox" style="max-width:500px;">
-    <div class="modal-header">
-      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:500;">Descargar Brochure</h3>
-      <button class="modal-close" onclick="closeEmailModal()">✕</button>
-    </div>
-    <div class="modal-body">
-      <p style="font-size:.88rem;color:var(--gray);margin-bottom:1.5rem;line-height:1.7;">
-        Para descargar el brochure, por favor ingrese su email. Le enviaremos una copia y lo mantendremos informado sobre nuestros servicios y publicaciones.
-      </p>
-      <div class="form-group">
-        <label style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);font-weight:500;margin-bottom:.4rem;display:block;">Nombre</label>
-        <input type="text" id="downloadName" placeholder="Su nombre" style="width:100%;font-family:'DM Sans',sans-serif;font-size:.9rem;padding:.85rem 1rem;border:1px solid var(--gray-light);border-radius:2px;background:var(--white);color:var(--black);outline:none;">
-      </div>
-      <div class="form-group" style="margin-top:1rem;">
-        <label style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);font-weight:500;margin-bottom:.4rem;display:block;">Email</label>
-        <input type="email" id="downloadEmail" placeholder="correo@empresa.cl" style="width:100%;font-family:'DM Sans',sans-serif;font-size:.9rem;padding:.85rem 1rem;border:1px solid var(--gray-light);border-radius:2px;background:var(--white);color:var(--black);outline:none;">
-      </div>
-      <div class="form-group" style="margin-top:1rem;">
-        <label style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);font-weight:500;margin-bottom:.4rem;display:block;">Empresa (opcional)</label>
-        <input type="text" id="downloadCompany" placeholder="Nombre de su empresa" style="width:100%;font-family:'DM Sans',sans-serif;font-size:.9rem;padding:.85rem 1rem;border:1px solid var(--gray-light);border-radius:2px;background:var(--white);color:var(--black);outline:none;">
-      </div>
-      <button onclick="downloadBrochure()" style="width:100%;margin-top:1.5rem;background:var(--red);color:white;border:none;padding:1rem 2rem;border-radius:2px;font-size:.8rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .25s;">
-        Descargar Brochure
-      </button>
-      <p style="font-size:.7rem;color:var(--gray);text-align:center;margin-top:1rem;line-height:1.5;">
-        Sus datos serán tratados de forma confidencial según nuestra política de privacidad.
-      </p>
-    </div>
-  </div>
-</div>
-
-
-<!-- SOBRE VÍCTOR -->
-<section class="about reveal" id="sobre-victor">
-  <div class="about-inner">
-    <div class="about-photo">
-      <img src="victor-barrientos.jpg" alt="Víctor Barrientos Boccardo" loading="lazy">
-    </div>
-    <div class="about-text">
-      <p class="section-label">Sobre Víctor</p>
-      <h2 class="section-title">Víctor Barrientos <em>Boccardo</em></h2>
-      <p class="about-bio">Fundador y consultor líder de Invictum SPA, con más de dos décadas de experiencia operativa en el mantenimiento de flotas mineras en Chile. Autor de seis libros técnicos publicados por Crisol Editorial, combina rigor metodológico con experiencia real de faena en análisis de costos, selección de flotas, estudios de reemplazo y optimización de recursos en minería a cielo abierto.</p>
-      <div class="about-creds">
-        <div class="about-cred"><div class="n">6</div><div class="t">Libros publicados · Crisol Editorial</div></div>
-        <div class="about-cred"><div class="n">Mgtr.</div><div class="t">PUCV &amp; USM · Ing. U. de Chile</div></div>
-        <div class="about-cred"><div class="n">+20</div><div class="t">Años en mantenimiento minero</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ECOSISTEMA INVICTUM -->
 <section class="ecosistema reveal" id="ecosistema">
   <div class="eco-inner">
@@ -1634,7 +1454,7 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
         <div class="eco-name">Mante<b>Work</b></div>
         <div class="eco-role">Producto · Empleo validado</div>
         <p class="eco-d">Portal de validación del canal de empleos técnicos mineros. Solo los avisos verificados de empresas reales llegan a los técnicos por WhatsApp.</p>
-        <a class="eco-cta" href="https://mantework.com" target="_blank" rel="noopener noreferrer">Visitar MANTEWORK →</a>
+        <a class="eco-cta" href="https://mantework.com" target="_blank" rel="noopener noreferrer">Visitar ManteWork →</a>
       </div>
       <div class="eco-card" style="--acc:#e0762e">
         <div class="eco-name">Fatality<b>Check</b></div>
@@ -1678,39 +1498,19 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
     </div>
     <div>
       <div class="contact-form">
-        <div class="form-row">
-          <div class="form-group">
-            <label>Nombre</label>
-            <input type="text" placeholder="Su nombre" id="contactName">
-          </div>
-          <div class="form-group">
-            <label>Empresa</label>
-            <input type="text" placeholder="Compañía minera" id="contactCompany">
-          </div>
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" placeholder="Su nombre" id="contactName">
         </div>
         <div class="form-group">
           <label>Email</label>
           <input type="email" placeholder="correo@empresa.cl" id="contactEmail">
         </div>
         <div class="form-group">
-          <label>Servicio de interés</label>
-          <select id="contactService">
-            <option value="">Seleccione un servicio…</option>
-            <option>Análisis de Costos LOM</option>
-            <option>Selección de Flotas</option>
-            <option>Estudios de Reemplazo</option>
-            <option>Contratos MARC / LPP</option>
-            <option>Gestión de Neumáticos</option>
-            <option>Optimización de Repuestos</option>
-            <option>Adquisición de Libros</option>
-            <option>Otro</option>
-          </select>
-        </div>
-        <div class="form-group">
           <label>Mensaje</label>
           <textarea placeholder="Cuéntenos brevemente sobre su operación y el desafío que enfrenta…" id="contactMessage"></textarea>
         </div>
-        <button class="btn-submit" onclick="sendContactForm()">Solicitar llamada en 24 hrs →</button>
+        <button class="btn-submit" onclick="sendContactForm()">Contactar a Víctor →</button>
       </div>
     </div>
   </div>
@@ -1761,8 +1561,15 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
     <div class="footer-col">
       <h5>Ecosistema</h5>
       <ul>
-        <li><a href="https://mantework.com" target="_blank" rel="noopener noreferrer">MANTEWORK</a></li>
+        <li><a href="https://mantework.com" target="_blank" rel="noopener noreferrer">ManteWork</a></li>
         <li><a href="https://fatalitycheck.com" target="_blank" rel="noopener noreferrer">FatalityCheck</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Descargas</h5>
+      <ul>
+        <li><a href="Brochure-Invictum-SPA-Consultoria.pdf" target="_blank" rel="noopener">Catálogo de servicios (PDF)</a></li>
+        <li><a href="Brochure-Libros-Victor-Barrientos.pdf" target="_blank" rel="noopener">Catálogo de libros (PDF)</a></li>
       </ul>
     </div>
   </div>
@@ -1785,48 +1592,6 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
     <div class="detail-modal-body" id="detailBody"></div>
   </div>
 </div>
-
-<!-- MODAL MERCADOPAGO -->
-<div class="modal-overlay" id="payModal" onclick="closeModalOutside(event)">
-  <div class="modal" id="modalBox">
-    <div class="modal-header">
-      <h3>Adquirir publicación</h3>
-      <button class="modal-close" onclick="closeModal()">✕</button>
-    </div>
-    <div class="modal-body">
-      <div class="modal-product">
-        <div class="modal-product-cover" id="modalCover"></div>
-        <div class="modal-product-info">
-          <h4 id="modalTitle"></h4>
-          <p id="modalNum"></p>
-        </div>
-        <div class="modal-price" style="font-size:1.2rem;letter-spacing:.02em;">Consultar</div>
-      </div>
-      <span class="modal-label">Seleccione su método de pago</span>
-      <button class="mp-btn" onclick="goMercadoPago()">
-        <svg viewBox="0 0 32 32" width="24" height="24" fill="white" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="6" fill="#009ee3"/><text x="4" y="22" font-size="12" font-weight="bold" fill="white" font-family="Arial">MP</text></svg>
-        Pagar con MercadoPago
-      </button>
-      <div class="mp-cards">
-        <span class="mp-card-icon">VISA</span>
-        <span class="mp-card-icon">MC</span>
-        <span class="mp-card-icon">AMEX</span>
-        <span class="mp-card-icon">Débito</span>
-        <span class="mp-card-icon">Redcompra</span>
-        <span class="mp-card-icon">Webpay</span>
-      </div>
-      <div class="mp-or">o también</div>
-      <button class="wa-pay-btn" onclick="goWhatsAppBuy()">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.857L.057 23.75a.5.5 0 0 0 .614.63l6.094-1.598A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.863 9.863 0 0 1-5.03-1.373l-.36-.214-3.733.979.997-3.645-.234-.374A9.86 9.86 0 0 1 2.1 12C2.1 6.527 6.527 2.1 12 2.1S21.9 6.527 21.9 12 17.473 21.9 12 21.9z"/></svg>
-        Coordinar compra por WhatsApp
-      </button>
-      <p class="mp-note">Al hacer clic en MercadoPago será redirigido a la plataforma segura de pago.<br>
-      Aceptamos tarjetas de crédito y débito emitidas en Chile.<br>
-      ¿Dudas? Escríbanos a <a href="mailto:contacto@invictum.cl">contacto@invictum.cl</a></p>
-    </div>
-  </div>
-</div>
-
 <!-- WHATSAPP FLOTANTE -->
 <div class="wa-float">
   <div class="wa-bubble" id="waBubble">¿Consultas sobre servicios o libros?</div>
@@ -1873,26 +1638,6 @@ setTimeout(() => {
   if (bubble) bubble.classList.add('show');
   setTimeout(() => { if (bubble) bubble.classList.remove('show'); }, 6000);
 }, 3000);
-
-// ── MODAL MERCADOPAGO ──
-let currentBook = '';
-function openModal(title, gradient, num) {
-  currentBook = title;
-  document.getElementById('modalTitle').textContent = title;
-  document.getElementById('modalNum').textContent = num;
-  const cover = document.getElementById('modalCover');
-  cover.style.background = gradient;
-  cover.textContent = title;
-  document.getElementById('payModal').classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-function closeModal() {
-  document.getElementById('payModal').classList.remove('active');
-  document.body.style.overflow = '';
-}
-function closeModalOutside(e) {
-  if (e.target === document.getElementById('payModal')) closeModal();
-}
 
 // ── DETAIL DATA ──
 const DETAILS = {
@@ -2088,13 +1833,10 @@ function openDetail(id) {
 
   // Actions
   bodyHTML += '<div class="detail-modal-actions">';
-  if (d.buyLabel) {
-    bodyHTML += `<button class="detail-btn-buy" onclick="openModal('${d.buyLabel}','${d.gradient}','Libro')">Comprar con tarjeta →</button>`;
-  }
   const waUrl = 'https://wa.me/56965945170?text=' + encodeURIComponent(d.waMsg);
   bodyHTML += `<a href="${waUrl}" target="_blank" class="detail-btn-wa">WhatsApp →</a>`;
   if (!d.buyLabel) {
-    bodyHTML += `<button class="detail-btn-buy" onclick="window.location='#contacto';closeDetail();">Solicitar propuesta →</button>`;
+    bodyHTML += `<button class="detail-btn-buy" onclick="window.location='#contacto';closeDetail();">Contactar a Víctor →</button>`;
   }
   bodyHTML += '</div>';
 
@@ -2111,38 +1853,12 @@ function closeDetailOutside(e) {
   if (e.target === document.getElementById('detailModal')) closeDetail();
 }
 
-document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeDetail(); closeModal(); } });
-
-// ── MERCADOPAGO ──
-const MP_LINKS = {
-  'Mantenimiento de Equipos en Minas a Cielo Abierto': 'https://mpago.la/REEMPLAZAR_LIBRO1',
-  'El Cerebro del Mantenedor': 'https://mpago.la/REEMPLAZAR_LIBRO2',
-  'Que la Producción no se Detenga': 'https://mpago.la/REEMPLAZAR_LIBRO3',
-  'Reemplazo de Camiones Mineros': 'https://mpago.la/REEMPLAZAR_LIBRO4',
-  'Reemplazo de Componentes': 'https://mpago.la/REEMPLAZAR_LIBRO5',
-  'La Mente Confiable': 'https://mpago.la/REEMPLAZAR_LIBRO6',
-  'Colección 4 Pack — Mantenimiento Minero': 'https://mpago.la/REEMPLAZAR_PACK',
-};
-function goMercadoPago() {
-  const link = MP_LINKS[currentBook];
-  if (link && !link.includes('REEMPLAZAR')) {
-    window.open(link, '_blank');
-  } else {
-    alert('⚙️ Configuración pendiente\n\nPara activar MercadoPago:\n1. Ingrese a mercadopago.cl\n2. Cree un "Enlace de pago" por libro\n3. Reemplace las URLs en MP_LINKS del código\n\nPor ahora puede contactar por WhatsApp.');
-  }
-}
-function goWhatsAppBuy() {
-  const msg = encodeURIComponent('Hola Víctor, me interesa adquirir: ' + currentBook + '. ¿Cómo puedo comprarlo?');
-  window.open('https://wa.me/56965945170?text=' + msg, '_blank');
-  closeModal();
-}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeDetail(); } });
 
 // ── CONTACT FORM ──
 function sendContactForm() {
   const name = document.getElementById('contactName').value;
-  const company = document.getElementById('contactCompany').value;
   const email = document.getElementById('contactEmail').value;
-  const service = document.getElementById('contactService').value;
   const message = document.getElementById('contactMessage').value;
   
   if (!name || !email) { 
@@ -2150,10 +1866,7 @@ function sendContactForm() {
     return; 
   }
   
-  let msg = `Hola Víctor, me llamo ${name}`;
-  if (company) msg += ` de ${company}`;
-  msg += ` y me gustaría conversar sobre los servicios de Invictum SPA.`;
-  if (service) msg += ` Mi interés principal es: ${service}.`;
+  let msg = `Hola Víctor, me llamo ${name} y me gustaría conversar sobre los servicios de Invictum SPA.`;
   if (message) msg += ` ${message}`;
   msg += ` Mi email es ${email}`;
   
