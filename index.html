@@ -845,7 +845,6 @@
     to { opacity: 1; transform: translateY(0) scale(1); }
   }
 
-  /* ── MODAL MERCADOPAGO ── */
   .modal-overlay {
     display: none; position: fixed; inset: 0; z-index: 1000;
     background: rgba(10,10,10,.7); backdrop-filter: blur(4px);
@@ -1072,7 +1071,45 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
 .books-grid .book-card{ cursor:pointer; }
 .books-grid .book-card .book-tag{ margin-top:.5rem; }
 .books-grid .book-card::after{ content:'Ver detalle →'; display:block; margin-top:1rem; font-size:.72rem; letter-spacing:.04em; color:var(--red); font-weight:500; }
-</style>
+
+  /* ── FORMACIÓN ── */
+  .training { padding: 7rem 6vw; background: var(--cream); position: relative; }
+  .training-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 4rem; padding-bottom: 2rem; border-bottom: 1px solid var(--gray-light);
+    gap: 3rem;
+  }
+  .training-intro { font-size: .9rem; color: var(--gray); line-height: 1.7; max-width: 380px; }
+  .training-list {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 3rem;
+    margin-bottom: 1rem;
+  }
+  .training-item {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem; font-weight: 500; color: var(--navy);
+    padding: 1.1rem 0; border-bottom: 1px solid var(--gray-light);
+    display: flex; align-items: baseline; gap: 1.2rem;
+  }
+  .training-num {
+    font-family: 'DM Sans', sans-serif; font-size: .7rem;
+    letter-spacing: .15em; color: var(--red); font-weight: 600;
+  }
+  .training-funnel {
+    margin-top: 3.5rem; padding: 2.5rem; background: var(--navy);
+    border-radius: 4px; display: flex; justify-content: space-between;
+    align-items: center; gap: 2rem; flex-wrap: wrap;
+  }
+  .training-funnel p {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.3rem;
+    font-weight: 300; color: var(--cream); line-height: 1.4; max-width: 560px;
+  }
+  .training-funnel p em { font-style: italic; color: var(--gold); }
+  @media (max-width: 900px) {
+    .training-grid { grid-template-columns: 1fr; }
+    .training-header { flex-direction: column; align-items: flex-start; }
+  }
+
+  </style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -1107,6 +1144,7 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
   <ul class="nav-links">
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#casos">Casos</a></li>
+    <li><a href="#ecosistema">Formación</a></li>
     <li><a href="#libros">Publicaciones</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#ecosistema">Ecosistema</a></li>
@@ -1122,6 +1160,7 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
 <div class="mobile-menu" id="mobileMenu">
   <a href="#servicios" onclick="closeMobileMenu()">Servicios</a>
   <a href="#casos" onclick="closeMobileMenu()">Casos de Éxito</a>
+  <a href="#ecosistema" onclick="closeMobileMenu()">Formación</a>
   <a href="#libros" onclick="closeMobileMenu()">Publicaciones</a>
   <a href="#nosotros" onclick="closeMobileMenu()">Nosotros</a>
   <a href="#ecosistema" onclick="closeMobileMenu()">Ecosistema</a>
@@ -1287,6 +1326,7 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
   </div>
 </section>
 <!-- BOOKS -->
+
 <section class="books reveal" id="libros">
   <div class="books-header">
     <div>
@@ -1446,11 +1486,12 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
     <h2 class="section-title" style="color:#f8f6f2;text-align:center;max-width:760px;margin:0 auto .8rem;">Una casa, <em style="color:var(--gold);font-style:italic;">tres soluciones</em></h2>
     <p class="eco-lead">De la consultoría nacen herramientas que resuelven problemas concretos del rubro minero. No solo asesoramos: construimos soluciones.</p>
     <div class="eco-grid">
-      <div class="eco-card" style="--acc:var(--red)">
-        <div class="eco-name">Invictum <b>SPA</b></div>
-        <div class="eco-role">Consultoría · Marca madre</div>
-        <p class="eco-d">Asesoría en confiabilidad, costos de mantenimiento y reemplazo de equipos para minería a cielo abierto. La autoridad técnica que respalda a los productos.</p>
-        <span class="eco-cta eco-here">Estás aquí</span>
+      
+      <div class="eco-card" style="--acc:var(--gold)">
+        <div class="eco-name">Invictum <b style="color:var(--gold);">Training</b></div>
+        <div class="eco-role">Formación · Cursos corporativos</div>
+        <p class="eco-d">Cursos de mantenimiento minero basados en los seis libros publicados. Programas para equipos de mantenimiento, planificación y gerencia.</p>
+        <a class="eco-cta" href="https://invictumtraining.com" target="_blank" rel="noopener noreferrer" style="color:var(--gold);border-color:var(--gold);">Visitar Invictum Training →</a>
       </div>
       <div class="eco-card" style="--acc:#2a9d8f">
         <div class="eco-name">Mante<b>Work</b></div>
@@ -1459,7 +1500,7 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
         <a class="eco-cta" href="https://mantework.com" target="_blank" rel="noopener noreferrer">Visitar ManteWork →</a>
       </div>
       <div class="eco-card" style="--acc:#e0762e">
-        <div class="eco-name">Fatality<b>Check</b></div>
+        <div class="eco-name">Fatality<b style="color:#3aa9ff;">Check</b></div>
         <div class="eco-role">Herramienta · Seguridad</div>
         <p class="eco-d">Asesor de IA que entrega los controles críticos y sesgos cognitivos según la tarea a ejecutar, basado en informes de investigación de accidentes fatales en minería.</p>
         <a class="eco-cta" href="https://fatalitycheck.com" target="_blank" rel="noopener noreferrer">Visitar FatalityCheck →</a>
@@ -1576,7 +1617,7 @@ nav{ background:rgba(13,27,42,.95)!important; border-bottom:1px solid rgba(255,2
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2026 Invictum SPA Consultoría. Todos los derechos reservados.</p>
+    <p>© 2026 Invictum SPA Consultoría. Todos los derechos reservados. · v2.3 · 06.09.2026</p>
     <p>Chile · Sector Minero</p>
   </div>
 </footer>
@@ -1731,6 +1772,7 @@ const DETAILS = {
     sections: [
       { heading: 'Acerca del libro', body: 'El propósito de este libro es dar a conocer estudios relacionados con la gestión del mantenimiento de flotas de equipos en minas a cielo abierto. Está dividido en seis capítulos que abordan distintas temáticas con casos reales en faenas mineras.' },
       { heading: 'Contenido por capítulo', items: ['Cap. 1: Liderazgo situacional para mejorar información en órdenes de trabajo','Cap. 2: Innovación operacional aplicada a gestión de neumáticos de camiones mineros','Cap. 3: Metodología para estimar el costo de falta en detenciones no programadas','Cap. 4: Externalización del mantenimiento y estimación de tarifa CPH para contratos MARC','Cap. 5: Reemplazo de flotas de camiones de hasta 200 toneladas — año óptimo económico','Cap. 6: Alternativas de reemplazo para equipos con altas horas de operación'] },
+      { heading: 'Curso corporativo disponible', body: 'Los contenidos de este libro se dictan en el curso "Gestión Integral del Mantenimiento de Flotas Mineras", dirigido a ingenieros y jefaturas de mantenimiento. Más información en invictumtraining.com o vía WhatsApp.' },
       { heading: 'Ideal para', body: 'Ingenieros de mantenimiento, jefes de operaciones, supervisores de flota, y profesionales que buscan casos prácticos aplicados a faenas mineras reales en Chile.' },
     ],
     result: 'Un libro de referencia esencial para mejorar la gestión integral del mantenimiento en minería a cielo abierto.',
@@ -1744,6 +1786,7 @@ const DETAILS = {
     sections: [
       { heading: 'Acerca del libro', body: 'Este libro da los pasos iniciales para enlazar los conceptos de neurociencia, psicología, sesgos cognitivos y economía del comportamiento con el mantenimiento industrial. Un libro único en su enfoque para la industria minera.' },
       { heading: 'Contenido por capítulo', items: ['Cap. 1: Sesgos cognitivos — cómo el cerebro comete errores sistemáticos en decisiones de mantenimiento','Cap. 2: Empujones al comportamiento (nudges) para mejorar calidad de información en órdenes de trabajo','Cap. 3: Predicciones en escenarios de incertidumbre — integrando experiencia, intuición y variables de ingeniería'] },
+      { heading: 'Curso corporativo disponible', body: 'Los contenidos de este libro, junto a los de "La Mente Confiable", se dictan en el curso "Confiabilidad Humana y Toma de Decisiones en Mantenimiento". Más información en invictumtraining.com o vía WhatsApp.' },
       { heading: 'Ideal para', body: 'Gerentes y supervisores de mantenimiento, ingenieros de confiabilidad, y profesionales interesados en mejorar la calidad de las decisiones técnicas integrando ciencias del comportamiento.' },
     ],
     result: 'Aplicación de nudges al ingreso de información en órdenes de mantenimiento permitió aumentos considerables de la calidad de datos para análisis.',
@@ -1758,6 +1801,7 @@ const DETAILS = {
       { heading: 'Acerca del libro', body: 'Las definiciones de inversión en repuestos son cruciales para soportar los procesos productivos. Es muy frecuente que las pérdidas por la falta de un repuesto superen con creces su valor comercial. Este libro responde preguntas aparentemente sencillas pero de alto impacto económico.' },
       { heading: 'Preguntas que responde', items: ['¿Cuántas unidades de motor diésel debo guardar en bodega?','¿Cuántos alternadores, motores de tracción o suspensiones necesito?','¿Cuál es el pool de componentes óptimo para flotas de 10, 20, 30 o más equipos?','¿Cuál es el impacto de las economías de escala en componentes de alto valor?'] },
       { heading: 'Metodología aplicada', body: 'Se utilizan conceptos de ingeniería como teoría de colas y cadenas de Markov, combinados con simulación Monte Carlo para obtener aproximaciones a la solución óptima. Los casos incluyen distintos repuestos, diversos tamaños de flota, costos de falta y tiempos de reparación en talleres externos.' },
+      { heading: 'Curso corporativo disponible', body: 'Los contenidos de este libro se dictan en el curso "Optimización de Inventarios y Repuestos Críticos", dirigido a planificadores, abastecimiento y jefaturas. Más información en invictumtraining.com o vía WhatsApp.' },
     ],
     result: 'Herramienta práctica para determinar el nivel óptimo de inventario de componentes críticos y minimizar el capital inmovilizado sin arriesgar la producción.',
     buyLabel: 'Que la Producción no se Detenga',
@@ -1770,6 +1814,7 @@ const DETAILS = {
     sections: [
       { heading: 'Acerca del libro', body: 'Aborda uno de los proyectos de inversión más frecuentes en la industria minera: el reemplazo de camiones. Con ejercicios resueltos y enfoque práctico, sirve como introducción a este tipo de estudios de alto impacto financiero.' },
       { heading: 'Contenido por capítulo', items: ['Cap. 1: Tipos de vida útil de activos, errores comunes y categorización de modelos de reemplazo','Cap. 2: Diferencias entre camiones mecánicos y eléctricos, mercado chileno, costos y productividades','Cap. 3: Camiones autónomos — disponibilidades, costos, productividad y proyección de crecimiento','Cap. 4: Metodología para estimar ingresos generados por el uso de un camión minero','Cap. 5: Evaluación de proyectos — VAN, VAC, CAE y VAE aplicados al reemplazo'] },
+      { heading: 'Curso corporativo disponible', body: 'Los contenidos de este libro se dictan en el curso "Evaluación Económica del Reemplazo de Flotas", dirigido a ingenieros de confiabilidad y gerencias. Más información en invictumtraining.com o vía WhatsApp.' },
       { heading: 'Ideal para', body: 'Ingenieros de proyectos, gerentes de activos, jefes de planificación y profesionales que deben justificar técnica y financieramente decisiones de reemplazo de flota ante la gerencia.' },
     ],
     result: 'Marco metodológico completo para evaluar proyectos de reemplazo de camiones integrando aspectos financieros, operacionales y de costos de mantenimiento.',
@@ -1783,6 +1828,7 @@ const DETAILS = {
     sections: [
       { heading: 'Acerca del libro', body: 'Aborda una de las tareas clave en los procesos de mantenimiento: la determinación de la frecuencia óptima de reemplazo de componentes de un activo físico. Responde preguntas críticas sobre cuándo y cómo reemplazar componentes para minimizar costos o maximizar disponibilidad.' },
       { heading: 'Contenido por capítulo', items: ['Cap. 1: Tipos de reparaciones — perfectas, imperfectas, mínimas, peor que antes','Cap. 2: Relación entre frecuencias de cambio preventivo y correctivo — dependencia y logística','Cap. 3: Integrales discretas, tiempos medios de falla y TBO (Tiempo entre Overhaul)','Cap. 4: Marco teórico para cálculo de costos por unidad de tiempo','Cap. 5: Ejemplos numéricos para distintos componentes de flotas mineras'] },
+      { heading: 'Curso corporativo disponible', body: 'Los contenidos de este libro se dictan en el curso "Frecuencia Óptima de Reemplazo de Componentes", dirigido a confiabilidad, planificación y mantenimiento. Más información en invictumtraining.com o vía WhatsApp.' },
       { heading: 'Preguntas clave que responde', items: ['¿Qué componentes deben reemplazarse de forma preventiva vs. correctiva?','¿Nuevo, reparado o remanufacturado?','¿Cada cuánto tiempo reemplazar para minimizar costos totales?','¿Cuál es el impacto de los retrasos logísticos en la frecuencia óptima?'] },
     ],
     result: 'Con ejercicios concretos, sirve como introducción práctica a la optimización de frecuencias de reemplazo para reducir costos totales de mantenimiento.',
@@ -1796,6 +1842,7 @@ const DETAILS = {
     sections: [
       { heading: 'Acerca del libro', body: 'Aborda uno de los desafíos más críticos en la gestión industrial: la toma de decisiones en contextos de incertidumbre, presión de tiempo y consecuencias relevantes para la seguridad, confiabilidad y continuidad operacional.' },
       { heading: 'Contenido por capítulo', items: ['Cap. 1: Fundamentos de la toma de decisiones — analíticas vs. intuitivas — heurísticas como ventaja adaptativa','Cap. 2: Sesgos cognitivos en mantenimiento, operaciones y seguridad — análisis de accidentes reales','Cap. 3: La Escalera del Conocimiento — de datos a decisiones confiables — barreras culturales y organizacionales'] },
+      { heading: 'Curso corporativo disponible', body: 'Los contenidos de este libro, junto a los de "El Cerebro del Mantenedor", se dictan en el curso "Confiabilidad Humana y Toma de Decisiones en Mantenimiento". Más información en invictumtraining.com o vía WhatsApp.' },
       { heading: 'Preguntas que explora', items: ['¿Son siempre mejores las decisiones basadas en grandes volúmenes de datos?','¿Cuándo una decisión rápida e intuitiva es más confiable que un análisis exhaustivo?','¿Qué rol juegan los sesgos cognitivos en los accidentes industriales?','¿Por qué algunas organizaciones repiten sistemáticamente las mismas fallas?'] },
     ],
     result: 'Propone una visión práctica para desarrollar una "mente confiable" individual y organizacional, integrando intuición experta, análisis técnico y aprendizaje organizacional.',
@@ -2005,5 +2052,16 @@ function sendToEmailService(name, email, company, brochureType) {
     var b=document.getElementById('cookieBanner'); if(b) b.classList.remove('show');
   }
 </script>
+
+<!-- ══ SELLO DE VERSIÓN ══ -->
+<div id="version-stamp" style="
+  position:fixed; bottom:10px; right:14px; z-index:60;
+  font-family:'DM Sans',sans-serif; font-size:0.62rem;
+  letter-spacing:.08em; color:rgba(107,107,107,.55);
+  background:rgba(248,246,242,.82); backdrop-filter:blur(3px);
+  padding:3px 9px; border-radius:3px; border:0.5px solid rgba(232,229,224,.8);
+  pointer-events:none; user-select:none;">
+  v2.3 · 06.09.2026
+</div>
 </body>
 </html>
